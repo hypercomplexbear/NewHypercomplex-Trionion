@@ -4,7 +4,7 @@
 
 大家好，很難一言以蔽之為什麼我會開發出這個新的超複數。只能說在一次次的巧合下，我這個平凡人開始了研究超複數的旅程。
 
-我只是個平凡人，並不是什麼厲害的數學家，所以很長一段開發的時間，我靠 Gemini 教我高等數學的知識。不過數學是門高深的學問，光靠 AI 學習是有限的。所以如果有不合數理的部分還請大家見諒。
+我並不是什麼厲害的數學家，所以很長一段開發的時間，我靠 Gemini 教我高等數學的知識。不過數學是門高深的學問，光靠 AI 學習是有限的。所以如果有不合數理的部分還請大家見諒。
 
 > 💡 **核心思想：**
 > 目前大眾普遍認為創造三元數幾乎不可能，不過我覺得超複數的 3, 5, 7 維度可能仍然存在有特殊的意義價值。畢竟 3, 5, 7 都是質數。作為一個民科，寫出嚴謹並發表數學相關的論文是難如登天的。所以作為替代方案，我在gemini協助下創建了新的超複數的計算沙盒程式，並放在GitHub來讓大家可以研究它。Readme則紀錄並存放了至今研究的結果。希望你們會喜歡!文章中有部分公式是我將想法傳給gemin，再借助gemini的推導而成。
@@ -52,6 +52,7 @@
 * $j^8*i= i$
 * $j^9*i= ij$
 
+
 ## 1.2. 設三元數T = $a + bi + cj + dk$(a, b, c, d為實數)。根據上述列表可以觀察到幾個特性:
 
 *   虛數單位 \(j\) 自乘 8 次會循環歷經每一個方向，並直接回到它的起點。\(k\) 的代數運算也遵循完全相同的規則。
@@ -70,6 +71,8 @@ $$ \text{The Matrix of } T = a \begin{bmatrix} 1 & 0 \\\\ 0 & 1 \end{bmatrix} + 
 
 </div>
 
+---
+
 ## 二. 零因子探討(Derivation of the Zero Divisor)
 
 ### 2.1. 零因子的代數恆等式推導(由gemini協助推導) 
@@ -81,20 +84,18 @@ $$ \text{The Matrix of } T = a \begin{bmatrix} 1 & 0 \\\\ 0 & 1 \end{bmatrix} + 
 
 $$ \det(T) = (a + bi)^2 - (ci - d)(c + di) = (a^2 - b^2 + 2cd) + (2ab - c^2 + d^2)i $$
 
-</div>
-
 若要使該元素成為零因子，其实部與虛部必須同時為 0，從而得到複數平面上的聯立奇異點方程組：
 
 *   $a^2 - b^2 + 2cd = 0 \implies a^2 - b^2 = -2cd$
 *   $2ab - c^2 + d^2 = 0 \implies c^2 - d^2 = 2ab$
 
-此時，利用等量公理建立過渡式：  
-
-$$ (a^2 - b^2)^2 + (2ab)^2 = (-2cd)^2 + (c^2 - d^2)^2 $$
+此時，利用等量公理建立過渡式： $(a^2 - b^2)^2 + (2ab)^2 = (-2cd)^2 + (c^2 - d^2)^2$
 
 代入代數恆等式 $(x-y)^2 + 4xy = (x+y)^2$，上式可簡化為：  
 
 $$ (a^2 + b^2)^2 = (c^2 + d^2)^2 \implies a^2 + b^2 = c^2 + d^2 $$
+
+</div>
 
 ### 結論：零因子幾何滿足要件 (The Singular Conditions)
 
@@ -133,14 +134,11 @@ $$ \text{Tr}(M) = (a + bi) + (a + bi) = 2(a + bi) = 0 \implies a = 0 \text{ 且 
 
 </div>
 
----
-
 ### 代入零因子黃金等式進行幾何約束
 當實部與第一虛軸皆被鎖定為 $a = 0, b = 0$ 時，我們將此條件代入前一章節由聯立方程式所導出的**第一行零因子等式**：
 
-$a^2 + b^2 = c^2 + d^2$。
+$a^2 + b^2 = c^2 + d^2$。進行代數代入：
 
-進行代數代入：
 <div align="center">
 
 $$ 0^2 + 0^2 = c^2 + d^2 \implies c^2 + d^2 = 0 $$
@@ -154,14 +152,13 @@ $$ c = 0 \text{ 且 } d = 0 $$
 
 </div>
 
----
-
 #### 冪零元論證之結論 (Conclusion on Nilpotency)
 
 > 倘若要求本超複數空間的特定映射矩陣形式滿足 $M^2 = \mathbf{0}$，在邏輯閉環下反推得到的唯一解只能是 $a = b = c = d = 0$，亦即**只有零矩陣（Null Matrix）本身**。
 > 
 > **結論：在非零的實數係數集合下，本自訂結構的超複數空間「不存在非零的冪零元」。
 
+</div>
 
 ### 2.3. 尋找冪等元的互補組 (Idempotent Complements)(由gemini協助推導)
 
@@ -185,8 +182,6 @@ $$ P(I - P) = \mathbf{0} $$
 $$ \text{Tr}(P) = 2(a + bi) = 1 \implies a = \frac{1}{2}, \; b = 0 $$
 
 </div>
-
----
 
 #### 利用零因子聯立方程求解空間坐標 $(c, d)$
 將求得的實部與第一虛軸約束 $a = \frac{1}{2}, b = 0$ 代入前述之零因子兩大核心要件中進行聯立解析：
@@ -212,8 +207,6 @@ $$ c = \frac{1}{2\sqrt{2}}, d = - \frac{1}{2\sqrt{2}} $$
 
 </div>
 
----
-
 #### 成功構造「冪等元 & 互補組」矩陣
 
 將這組精密的四維幾何坐標 $(a, b, c, d) = \left(\frac{1}{2}, 0, \frac{1}{2\sqrt{2}}, -\frac{1}{2\sqrt{2}}\right)$ 代入完全體矩陣中，我們成功構造出本超複數空間特有的**投影矩陣 $P$**：
@@ -232,14 +225,13 @@ $$ I - P = \begin{bmatrix} 1 & 0 \\\\ 0 & 1 \end{bmatrix} - \begin{bmatrix} \fra
 
 </div>
 
----
-
 ### 構造論證之結論 (Significant Conclusion)
 
 > 這兩個由複數與無理數精細交織而成的非零矩陣 **$P$** 與 **$(I - P)$**，在本超複數空間中構成了一組**完美特定形式的零因子對（Zero-Divisor Pair）**！
 > 
 > **它們各自皆非零元素，但它們在幾何代數空間中相乘的結果「絕對會是完美的零矩陣 0」！
 
+</div>
 
 ### 2.4. 有趣的零因子 (獨自推導)
 
@@ -259,6 +251,7 @@ $$ \begin{cases} a^2 + b^2 = c^2 + d^2 \\\\ a^2 - b^2 = -2cd \\\\ c^2 - d^2 = 2a
 * 有趣的事是這組零因子(1, i, $\sqrt{2}j$)的伴隨零因子為(1, i, - $\sqrt{2}j$)，也就是2.1章節的例子。這兩組座標點對X軸互相映射，模長夾角均為45度角。這是巧合嗎?構成了一個局部光錐的形狀?
 所以合理推論: T = a + ai + $\sqrt{2}aj$ 的每個點連成的線與 T = a + ai - $\sqrt{2}aj$ 的每個點連成的線構成了兩條通過原點的X型零因子界線，而它們巧合地與光錐形狀相似?我們有辦法在空間中相同的位階內找到連續的零因子點位，讓它在同一位階閉合成一個圓環，最終形成一個真正的光錐錐體嗎?這是個有挑戰且有趣的議題。
 
+</div>
 
 ## 三. 代數公理系統與乘法度規表 (Algebraic Foundations)
 設有兩任意三元數元素 $X_1 = a_1 + b_1i + c_1j + d_1k$ 與 $X_2 = a_2 + b_2i + c_2j + d_2k$。其四則運算公理定義如下：
@@ -285,7 +278,7 @@ $$ \begin{cases} a^2 + b^2 = c^2 + d^2 \\\\ a^2 - b^2 = -2cd \\\\ c^2 - d^2 = 2a
 
 #### **3.2.1. 試證 ij = ji**
 
-**證名一:利用乘法展開式(gemini提議的證明方法)**
+**證明方式一:利用乘法展開式(gemini提議的證明方法)**
 假設空間中有兩元素X與Y， $X = i \times j$ 與 $Y = j \times i$ ，嘗試對X與Y求得在空間中的坐標位置。
 
 當計算 $X = i \times j$ 時：
@@ -316,7 +309,8 @@ $$ Y = j \times i = \begin{bmatrix} 0, & 0, & 0, & 1 \end{bmatrix}^T = k $$
 
 **結論**：由於兩者計算後共享完全相同的 4D 空間幾何坐標，由代數等量公理，正面得證： $ij = ji$。
 
-**證明二:代數反證法(獨自推導)**
+
+**證明方式二:代數反證法(獨自推導)**
 
 假設 $$ij \neq ji$$
 
@@ -326,8 +320,111 @@ $$ Y = j \times i = \begin{bmatrix} 0, & 0, & 0, & 1 \end{bmatrix}^T = k $$
 
 得到 $$-i  \neq -i$$，產生自身不等於自身的邏輯矛盾。故得證 $$ij = ji$$。
 
-**試證本超複數系統的乘法滿足結合律、交換律與分配律（在非零因子域內）。**
 
+#### 3.2.2 **試證本超複數系統的乘法滿足結合律、交換律與分配律（在非零因子域內）。(gemni協助推導)**
+
+Gemini跟我說如果超複數已經可以建立 $2 \times 2$ 複數矩陣，那基本上可以用 **「矩陣同構（Matrix Isomorphism）」定理與環論（Ring Theory）之同構基本定理** 證明這個三元數可以滿足乘法結合律、交換律與分配律，而不需應用代數展開冗長的運算結果。
+這對我來說當然是件好事，不過我覺得可能還是要由數學專家來論定比較適合。所以我決定還是乖乖嘗試證明。經過討論，我們決定用簡化的矩陣來呈現證明，如下:
+
+為了讓三大定律的結構最直觀地呈現，首先定義完整映射矩陣 $T$ 與精簡複數符號 $z, w$ 的對應關係。令：
+
+<div align="center">
+
+$$ \text{The Matrix of } T = a \begin{bmatrix} 1 & 0 \\\\ 0 & 1 \end{bmatrix} + b \begin{bmatrix} i & 0 \\\\ 0 & i \end{bmatrix} + c \begin{bmatrix} 0 & i \\\\ 1 & 0 \end{bmatrix} + d \begin{bmatrix} 0 & -1 \\\\ i & 0 \end{bmatrix} = \begin{bmatrix} a + bi & ci - d \\\\ c + di & a + bi \end{bmatrix} = \begin{bmatrix} z & w \\\\ \bar{w} & z \end{bmatrix} $$
+
+</div>
+
+在此簡化結構中， $z = a+bi$, $w = ci-d$, $\bar{w} = c+di$（此處 $\bar{w}$ 分量天生滿足本空間度規之共軛形式）。所有的 $z_n, w_n$ 皆為標準二維平面之複數元素，天生滿足標準交換與結合律。
+
+透過任意三個超複數矩陣 $T_A, T_B, T_C$ 的簡寫區塊形式，我們可以直接透過括號位置來觀察其代數拓撲：
+
+---
+
+#### 矩陣區塊符號顯式結構對比 (Simplified Structural Verification)
+
+為了讓三大定律的結構最直觀地呈現，我們拋棄冗長的分量字母，將任意三個超複數矩陣 $T_A, T_B, T_C$ 直接簡化為由複數代數項組成的超精簡區塊形式：
+
+$$ T_A = \begin{bmatrix} z_1 & w_1 \\\\ \bar{w}_1 & z_1 \end{bmatrix}, \quad T_B = \begin{bmatrix} z_2 & w_2 \\\\ \bar{w}_2 & z_2 \end{bmatrix}, \quad T_C = \begin{bmatrix} z_3 & w_3 \\\\ \bar{w}_3 & z_3 \end{bmatrix} $$
+
+其中 $z_n, w_n$ 皆為標準二維平面之複數元素，天生滿足標準交換與結合律。透過這三個簡化矩陣的括號位置，我們可以直接觀察其代數拓撲：
+
+#### 3.2.2.1 分配律結構觀察 (Distributivity)
+我們將左端項 $T_A(T_B + T_C)$ 與右端項 $T_AT_B + T_AT_C$ 進行結構並列：
+
+*   **左端項（括號內先加）**：
+<div align="center">
+
+$$ \begin{bmatrix} z_1 & w_1 \\\\ \bar{w}_1 & z_1 \end{bmatrix} \times \left( \begin{bmatrix} z_2 & w_2 \\\\ \bar{w}_2 & z_2 \end{bmatrix} + \begin{bmatrix} z_3 & w_3 \\\\ \bar{w}_3 & z_3 \end{bmatrix} \right) = \begin{bmatrix} z_1 & w_1 \\\\ \bar{w}_1 & z_1 \end{bmatrix} \begin{bmatrix} (z_2+z_3) & (w_2+w_3) \\\\ (\bar{w}_2+\bar{w}_3) & (z_2+z_3) \end{bmatrix} $$
+
+</div>
+
+*   **右端項（拆開相乘再加）**：
+<div align="center">
+
+$$ = \begin{bmatrix} z_1z_2 + w_1\bar{w}_2 & z_1w_2 + w_1z_2 \\\\ \bar{w}_1z_2 + z_1\bar{w}_2 & \bar{w}_1w_2 + z_1z_2 \end{bmatrix} + \begin{bmatrix} z_1z_3 + w_1\bar{w}_3 & z_1w_3 + w_1z_3 \\\\ \bar{w}_1z_3 + z_1\bar{w}_3 & \bar{w}_1w_3 + z_1z_3 \end{bmatrix} $$
+
+</div>
+
+**觀察結論**：利用標準複數的分配律對比兩端矩陣的對應項（例如左端第一項乘開為 $z_1(z_2+z_3) + w_1(\bar{w}_2+\bar{w}_3)$），其括號展開後的結構與右端項完全相等。**分配律結構得證**。
+
+---
+
+#### 3.2.2.2 結合律結構觀察 (Associativity)
+欲驗證 $(T_A \times T_B) \times T_C \stackrel{?}{=} T_A \times (T_B \times T_C)$，我們直接觀察相乘後的括號特徵：
+
+*   **左端項結構 (先結合前兩者)**：
+<div align="center">
+
+$$ \left( \begin{bmatrix} z_1 & w_1 \\\\ \bar{w}_1 & z_1 \end{bmatrix} \begin{bmatrix} z_2 & w_2 \\\\ \bar{w}_2 & z_2 \end{bmatrix} \right) \times T_C = \begin{bmatrix} (z_1z_2 + w_1\bar{w}_2) & (z_1w_2 + w_1z_2) \\\\ (\bar{w}_1z_2 + z_1\bar{w}_2) & (\bar{w}_1w_2 + z_1z_2) \end{bmatrix} \begin{bmatrix} z_3 & w_3 \\\\ \bar{w}_3 & z_3 \end{bmatrix} $$
+
+</div>
+
+*   **右端項結構 (先結合後兩者)**：
+<div align="center">
+
+$$ T_A \times \left( \begin{bmatrix} z_2 & w_2 \\\\ \bar{w}_2 & z_2 \end{bmatrix} \begin{bmatrix} z_3 & w_3 \\\\ \bar{w}_3 & z_3 \end{bmatrix} \right) = \begin{bmatrix} z_1 & w_1 \\\\ \bar{w}_1 & z_1 \end{bmatrix} \begin{bmatrix} (z_2z_3 + w_2\bar{w}_3) & (z_2w_3 + w_2z_3) \\\\ (\bar{w}_2z_3 + z_2\bar{w}_3) & (\bar{w}_2w_3 + z_2z_3) \end{bmatrix} $$
+
+</div>
+
+*   **左端項第一列第一行展開結果**：
+<div align="center">
+
+$$ (z_1z_2 + w_1\bar{w}_2)z_3 + (z_1w_2 + w_1z_2)\bar{w}_3 = (z_1z_2)z_3 + (w_1\bar{w}_2)z_3 + (z_1w_2)\bar{w}_3 + (w_1z_2)\bar{w}_3 $$
+
+</div>
+
+*   **右端項第一列第一行展開結果**：
+<div align="center">
+
+$$ z_1(z_2z_3 + w_2\bar{w}_3) + w_1(\bar{w}_2z_3 + z_2\bar{w}_3) = z_1(z_2z_3) + z_1(w_2\bar{w}_3) + w_1(\bar{w}_2z_3) + w_1(z_2\bar{w}_3) $$
+
+</div>
+
+**觀察結論**：同理分配律論證，既然第一行第一列結果一樣，在相同矩陣運算規則下，合理推論其他行列也會是同樣結果。故**結合律結構得證**。
+
+---
+
+#### 3.2.2.3 交換律結構觀察 (Commutativity)
+矩陣乘法並不能符合交換率，gemini反而給我一個錯誤的論證。所以我要求直接用乘法展開式論證，如下表示:
+
+*   **$X_1 \times X_2$ 的四維展開分量**：
+    *   實部 $a_3 = a_1a_2 - b_1b_2 - c_1d_2 - d_1c_2$
+    *   $i$ 軸 $b_3 = a_1b_2 + b_1a_2 + c_1c_2 - d_1d_2$
+    *   $j$ 軸 $c_3 = a_1c_2 - b_1d_2 + c_1a_2 - d_1b_2$
+    *   $k$ 軸 $d_3 = a_1d_2 + b_1c_2 + c_1b_2 + d_1a_2$
+
+---
+
+*   **$X_2 \times X_1$ 的四維展開分量（將下標 1 與 2 完全對調）**：
+    *   實部 $a_3' = a_2a_1 - b_2b_1 - c_2d_1 - d_2c_1$
+    *   $i$ 軸 $b_3' = a_2b_1 + b_2a_1 + c_2c_1 - d_2d_1$
+    *   $j$ 軸 $c_3' = a_2c_1 - b_2d_1 + c_2a_1 - d_2b_1$
+    *   $k$ 軸 $d_3' = a_2d_1 + b_2c_1 + c_2b_1 + d_2a_1$
+
+既然公式內部的所有分量係數（ $a_n, b_n, c_n, d_n$ ）皆為**純實數（Real Numbers）**，在實數體中，乘法天生完美滿足交換律。沒有理由懷疑 $a_1a_2 \neq a_2a_1$ ，故**交換律結構得證**。
+
+
+---
 
 
 ### 3.3. 任意兩三元數除法運算 
