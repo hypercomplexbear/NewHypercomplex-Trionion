@@ -221,3 +221,169 @@ These two non-zero matrices, \(P\) and \((I - P)\), which are finely interwoven 
 ### b.4. Fascinating Zero Divisors (Independent Derivation)
 
 The aforementioned nilpotent and idempotent elements may hold mathematical significance, which is why Gemini suggested I derive them. However, I personally found another set of zero divisors more intriguing. Let us return to the initial geometric constraints for zero divisors:
+
+$$ \begin{cases} a^2 + b^2 = c^2 + d^2 \\\\ a^2 - b^2 = -2cd \\\\ c^2 - d^2 = 2ab \end{cases} $$
+
+When \(d = 0\), we can obtain $a = b, c = \pm\sqrt{2}a$; alternatively, when \(a = 0\), we can obtain  $c = d, b = \pm\sqrt{2}c$.
+
+Observing the first form, I listed a set of zero divisors using a base unit length of a = 1 : (1, i, $\sqrt{2}j$). When plotting these coordinate points in space, I discovered something quite fascinating!
+* Every face of this tetrahedron is a right-angled triangle.
+* This tetrahedron contains all the special angles $(30^\circ, 45^\circ, 54.74^\circ / 35.26^\circ, 60^\circ, \text{ and } 90^\circ)$. Among them, the $(54.74^{\circ }\) / \(35.26^{\circ }\)$ angle is what Gemini refers to as the "Magic Angle." In numerous technological applications, this specific angle is utilized to eliminate interference signals (such as in nuclear magnetic resonance, MRI). Is this merely a coincidence?
+* The lengths of the edges of this tetrahedron can be expressed as a sequence of square roots: ( $\sqrt{1}$, $\sqrt{2}$, $\sqrt{3}$, $\sqrt{4}$ ), which is precisely the Spiral of Theodorus (also known as the square root spiral).
+* Gemini told me that the zero divisors in this hypercomplex system can be viewed as a type of light cone. I don't fully understand how it suddenly connected to Hermann Minkowski's spacetime theory and light cones, though it did try to explain it to me. The $(45^{\circ }\)$ angle seems to be a crucial angle for the light cone.
+* Interestingly, the companion zero divisor to this set of zero divisors (1, i, $\sqrt{2}j$) is (1, i, - $\sqrt{2}j$)—which is the exact example from Section 2.1. These two sets of coordinate points map to each other across the \(X\)-axis, and the angles of their moduli are both $(45^{\circ }\)$. Is this merely a coincidence? Could they be forming the shape of a local light cone?Therefore, it is reasonable to infer that the line connecting every point of T = a + ai + $\sqrt{2}aj$ and the line connecting every point of T = a + ai - $\sqrt{2}aj$ constitute two intersecting \(X\)-shaped zero-divisor boundaries passing through the origin. Coincidentally, they resemble the shape of a light cone. Is there a way to locate other zero-divisor lines in this space and observe whether the collection of all zero-divisor lines forms a complete light cone? This will be both a fascinating and challenging endeavor!
+
+</div>
+
+## C. Algebraic Axioms and the Multiplicative Metric Table (Algebraic Foundations)
+
+Let there be two arbitrary trinion elements, $X_1 = a_1 + b_1i + c_1j + d_1k$ and $X_2 = a_2 + b_2i + c_2j + d_2k$. Their arithmetic axioms are defined as follows:
+
+### c.1. Addition and Subtraction Expansions for Two Arbitrary Trinions (Independent Derivation)
+
+Since it is widely known that the arithmetic axioms for the addition and subtraction of any two complex numbers simply state "real part plus real part, imaginary part plus imaginary part," this trinion system naturally follows the same logic. It is expressed as follows:
+
+* Addition (Real parts add to real parts, imaginary parts add to imaginary parts):(a1 + a2) + (b1 + b2)i + (c1 + c2)j + (d1 + d2)k
+
+* Subtraction (Real parts subtract from real parts, imaginary parts subtract from imaginary parts): (a1 - a2) + (b1 - b2)i + (c1 - c2)j + (d1 - d2)k
+
+### c.2. Multiplication Expansion for Two Arbitrary Trinions (Independent Derivation)
+
+Based on the algebraic metric table for basis multiplication, the precise analytical expressions for the four-dimensional components of their product,  $X_3 = X_1 \times X_2 = a_3 + b_3i + c_3j + d_3k$, are as follows:
+
+*   **real part (a3)**： $a_3 = a_1a_2 - b_1b_2 - c_1d_2 - d_1c_2$
+*   **i -  axis (b3)**： $b_3 = a_1b_2 + b_1a_2 + c_1c_2 - d_1d_2$
+*   **j -  axis (c3)**： $c_3 = a_1c_2 - b_1d_2 + c_1a_2 - d_1b_2$
+*   **k -  axis (d3)**： $d_3 = a_1d_2 + b_1c_2 + c_1b_2 + d_1a_2$
+
+#### Note: Observing this expansion, I found that it differs from Hamilton's quaternion by only a few signs. It is mind-blowing how a minor change in signs can lead to such vastly different mathematical results!
+
+#### **c.2.1. Proving the Commutativity: ij = ji**
+
+**Proof Method 1: Using the Multiplication Expansion (Proof method proposed by Gemini)**
+Assume there are two elements, X and Y, in the space, where  $X = i \times j$ and  $Y = j \times i$. We will attempt to determine their coordinate positions within the space. 
+When calculating $X = i \times j$: The first element has only the \(i\)-axis component, $b_1 = 1$ (with all other components being 0); the second element has only the \(j\)-axis component, $c_2 = 1$ (with all other components being 0). Substituting these into the component expansions yields:
+*   real part $a_3 = 0$
+*   i -  axis $b_3 = 0$
+*   j -  axis $c_3 = 0$
+*   k -  axis $d_3 = b_1 \times c_2 = 1 \times 1 = 1$
+
+<div align="center">
+
+$$ X = i \times j = \begin{bmatrix} 0, & 0, & 0, & 1 \end{bmatrix}^T = k $$
+
+</div>
+
+When calculating $Y = j \times i$ :The first element has only the \(j\)-axis component, $c_1 = 1$ (with all other components being 0); the second element has only the \(i\)-axis component, $b_2 = 1$ (with all other components being 0). Substituting these into the component expansions yields:
+
+*   real part $a_3 = 0$
+*   i -  axis $b_3 = 0$
+*   j -  axis $c_3 = 0$
+*   k -  axis $d_3 = c_1 \times b_2 = 1 \times 1 = 1$
+
+<div align="center">
+
+$$ Y = j \times i = \begin{bmatrix} 0, & 0, & 0, & 1 \end{bmatrix}^T = k $$
+
+</div>
+
+**Conclusion: Since both calculations share the exact same 4D spatial geometric coordinates, by the algebraic axioms of equality, it directly proves that $(ij = ji)$.**
+
+**Proof Method 2: Algebraic Proof by Contradiction (Independent Derivation)**
+
+Assume that: $$ij \neq ji$$
+
+Perform the operation of "left-multiplying by i and right-multiplying by j" simultaneously on both sides of the inequality:
+
+* **Expansion of the left side**： $i \cdot (ij) \cdot j = (i \cdot i) \cdot (j \cdot j) = (-1) \cdot (i) = -i$
+* **Expansion of the right side**： $i \cdot (ji) \cdot j = j^2 \times j \times j^2 \times j = j^6 = -i$
+
+This yields: $$-i  \neq -i$$
+which creates a logical contradiction of an entity not equaling itself. Therefore, it is proven that $$ij = ji$$.
+
+#### c.2.2 **Proving that this Hypercomplex System Satisfies the Associative, Commutative, and Distributive Laws of Multiplication (Within the Non-Zero-Divisor Domain) (Derived with the assistance of Gemini)**
+
+Gemini explained to me that if a hypercomplex number system can already establish a $(2 \times 2\)$ complex matrix representation, its satisfaction of the associative, commutative, and distributive laws of multiplication can fundamentally be proven using the Matrix Isomorphism Theorem and the First Isomorphism Theorem of Ring Theory, without the need for tediously expanding massive algebraic expressions.
+
+While this shortcut sounds wonderful, I believe such high-level theoretical mappings are best left to professional mathematicians to formally validate. Therefore, I decided to take the rigorous route and tackle the proof step by step. Following our discussion, we resolved to present the proof using a simplified matrix approach, as detailed below:
+
+To present the structure of the three fundamental laws in the most intuitive manner, we first define the correspondence between the full mapping matrix \(T\) and the simplified complex notations \(z, w\). Let:
+
+<div align="center">
+
+$$ \text{The Matrix of } T = a \begin{bmatrix} 1 & 0 \\\\ 0 & 1 \end{bmatrix} + b \begin{bmatrix} i & 0 \\\\ 0 & i \end{bmatrix} + c \begin{bmatrix} 0 & i \\\\ 1 & 0 \end{bmatrix} + d \begin{bmatrix} 0 & -1 \\\\ i & 0 \end{bmatrix} = \begin{bmatrix} a + bi & ci - d \\\\ c + di & a + bi \end{bmatrix} = \begin{bmatrix} z & w \\\\ \bar{w} & z \end{bmatrix} $$
+
+</div>
+
+Within this simplified structure,  $z = a+bi$, $w = ci-d$, and $\bar{w} = c+di$ (where the \(\={w}\) component naturally satisfies the conjugate form of this space's metric). All \(z_{n}\) and \(w_{n}\) are complex elements on a standard two-dimensional plane, which inherently satisfy the standard commutative and associative laws.
+
+Through the abbreviated block forms of any three hypercomplex matrices $T_A, T_B, T_C$ , we can directly observe their algebraic topology through the placement of parentheses:
+
+#### Matrix Block Notation: Explicit Structural Comparison (Simplified Structural Verification)
+
+To present the structure of the three fundamental laws in the most intuitive manner, we discard the tedious, individual component variables and directly simplify any three hypercomplex matrices— $T_A, T_B, T_C$ —into ultra-abbreviated block forms composed of complex algebraic terms:
+
+$$ T_A = \begin{bmatrix} z_1 & w_1 \\\\ \bar{w}_1 & z_1 \end{bmatrix}, \quad T_B = \begin{bmatrix} z_2 & w_2 \\\\ \bar{w}_2 & z_2 \end{bmatrix}, \quad T_C = \begin{bmatrix} z_3 & w_3 \\\\ \bar{w}_3 & z_3 \end{bmatrix} $$
+
+Within this setup, all $z_n, w_n$ are complex elements on a standard two-dimensional plane, which inherently satisfy the standard commutative and associative laws. By looking at the placement of parentheses among these three simplified matrices, we can directly observe their algebraic topology:
+
+#### c.2.2.1 Structural Observation of the Distributive Law (Distributivity)
+
+We place the left-hand expression $T_A(T_B + T_C)$ and the right-hand expression $T_AT_B + T_AT_C$ side-by-side for a structural comparison:
+
+* Left-hand expression (Adding inside the parentheses first):
+<div align="center">
+
+$$ \begin{bmatrix} z_1 & w_1 \\\\ \bar{w}_1 & z_1 \end{bmatrix} \times \left( \begin{bmatrix} z_2 & w_2 \\\\ \bar{w}_2 & z_2 \end{bmatrix} + \begin{bmatrix} z_3 & w_3 \\\\ \bar{w}_3 & z_3 \end{bmatrix} \right) = \begin{bmatrix} z_1 & w_1 \\\\ \bar{w}_1 & z_1 \end{bmatrix} \begin{bmatrix} (z_2+z_3) & (w_2+w_3) \\\\ (\bar{w}_2+\bar{w}_3) & (z_2+z_3) \end{bmatrix} $$
+
+</div>
+
+* Right-hand expression (Multiplying out and then adding):
+<div align="center">
+
+$$ = \begin{bmatrix} z_1z_2 + w_1\bar{w}_2 & z_1w_2 + w_1z_2 \\\\ \bar{w}_1z_2 + z_1\bar{w}_2 & \bar{w}_1w_2 + z_1z_2 \end{bmatrix} + \begin{bmatrix} z_1z_3 + w_1\bar{w}_3 & z_1w_3 + w_1z_3 \\\\ \bar{w}_1z_3 + z_1\bar{w}_3 & \bar{w}_1w_3 + z_1z_3 \end{bmatrix} $$
+
+</div>
+
+**Conclusion from Observation**: By applying the distributive law of standard complex numbers to compare the corresponding terms of the matrices on both sides (for example, expanding the first term on the left side yields $z_1(z_2+z_3) + w_1(\bar{w}_2+\bar{w}_3)$）, the structure after expanding the parentheses is perfectly identical to the right-hand expression. The distributive structure is thus proven.
+
+---
+
+#### 3.2.2.2 tructural Observation of the Associative Law (Associativity)
+
+To verify $(T_A \times T_B) \times T_C \stackrel{?}{=} T_A \times (T_B \times T_C)$, we directly observe the characteristic placement of the parentheses after multiplication:
+
+* Left-hand expression structure (Associating the first two elements first):
+<div align="center">
+
+$$ \left( \begin{bmatrix} z_1 & w_1 \\\\ \bar{w}_1 & z_1 \end{bmatrix} \begin{bmatrix} z_2 & w_2 \\\\ \bar{w}_2 & z_2 \end{bmatrix} \right) \times T_C = \begin{bmatrix} (z_1z_2 + w_1\bar{w}_2) & (z_1w_2 + w_1z_2) \\\\ (\bar{w}_1z_2 + z_1\bar{w}_2) & (\bar{w}_1w_2 + z_1z_2) \end{bmatrix} \begin{bmatrix} z_3 & w_3 \\\\ \bar{w}_3 & z_3 \end{bmatrix} $$
+
+</div>
+
+* Right-hand expression structure (Associating the last two elements first):
+<div align="center">
+
+$$ T_A \times \left( \begin{bmatrix} z_2 & w_2 \\\\ \bar{w}_2 & z_2 \end{bmatrix} \begin{bmatrix} z_3 & w_3 \\\\ \bar{w}_3 & z_3 \end{bmatrix} \right) = \begin{bmatrix} z_1 & w_1 \\\\ \bar{w}_1 & z_1 \end{bmatrix} \begin{bmatrix} (z_2z_3 + w_2\bar{w}_3) & (z_2w_3 + w_2z_3) \\\\ (\bar{w}_2z_3 + z_2\bar{w}_3) & (\bar{w}_2w_3 + z_2z_3) \end{bmatrix} $$
+
+</div>
+
+* Expansion result for the first row and first column of the left-hand expression:
+<div align="center">
+
+$$ (z_1z_2 + w_1\bar{w}_2)z_3 + (z_1w_2 + w_1z_2)\bar{w}_3 = (z_1z_2)z_3 + (w_1\bar{w}_2)z_3 + (z_1w_2)\bar{w}_3 + (w_1z_2)\bar{w}_3 $$
+
+</div>
+
+* Expansion result for the first row and first column of the right-hand expression:
+<div align="center">
+
+$$ z_1(z_2z_3 + w_2\bar{w}_3) + w_1(\bar{w}_2z_3 + z_2\bar{w}_3) = z_1(z_2z_3) + z_1(w_2\bar{w}_3) + w_1(\bar{w}_2z_3) + w_1(z_2\bar{w}_3) $$
+
+</div>
+
+**Conclusion from Observation**: Following the same logic as the distributivity proof, since the results for the first row and first column are identical, it is reasonable to infer under the same matrix operation rules that all other rows and columns will yield the same results. The associative structure is thus proven.
+
+---
+
+
+* 
