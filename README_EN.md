@@ -654,7 +654,7 @@ Naturally, the Python implementation was handled by Gemini. It achieves this by 
 * $j^8 = 2(1 + i) + 2i(1 + i) = 4i$
 * $j^9 = 4ij$ 
 
-It can be observed that the system loses its 8-fold cyclic periodicity, and the \(ij\) term becomes decoupled—unable to be substituted—yet it exhibits a regularly increasing pattern. Could it be that only the $90^\circ$ orientations (\(i\) or \(-i\)) on the Gaussian complex plane possess this special property? This remains an open question.
+It can be observed that the system loses its 8-fold cyclic periodicity, and the \(ij\) term becomes decoupled—unable to be substituted—yet it exhibits a regularly increasing pattern. Could it be that only the $90^\circ$ orientations \(i\) or \(-i\) on the Gaussian complex plane possess this special property? This remains an open question.
 If the orientation is set to $0^\circ$ or $180^\circ$, it corresponds either to the standard imaginary number configuration with $j^2 = -1$, or a split-complex number configuration resembling $j^2 = 1$. These are hypercomplex number systems that have already been established and developed.
 
 *  3. We could also abandon the assumption that the \(j\)-axis remains perpendicular to the Gaussian complex plane. For instance, we could configure it to tilt at specific non-orthogonal angles, such as $30^\circ, 45^\circ, 54.74^\circ / 35.26^\circ, 60^\circ, 90^\circ$, or even the Earth's axial tilt of $23.5^{\circ }$. Although I have yet to formulate a mathematical representation for this approach, it undoubtedly promises to be another fascinating experiment.
