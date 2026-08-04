@@ -1,5 +1,10 @@
 > 🌐 [English Version of README available here](./README_EN.md)
 
+### 沙盒安裝說明
+* 步驟 1：下載專案代碼 (Download Code)並解壓縮。
+* 步驟 2：本系統需要安裝python的Gradio 網頁介面、NumPy 矩陣庫與 Plotly 3D 繪圖引擎：進入CMD輸入指令(pip install gradio numpy plotly)。
+* 步驟 3：安裝完成後直接點擊app.py啟動(或是用CMD輸入: python app.py)，看到網址出現後複製網址到瀏覽器就會出現介面了。
+
 ### 作者前言
 
 大家好，很難一言以蔽之為什麼我會開發出這個新的超複數。只能說在一次次的巧合下，我這個平凡人開始了研究超複數的旅程。
