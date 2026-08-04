@@ -485,7 +485,7 @@ These outputs are in perfect agreement with the hand-calculated analytical resul
 Given two hypercomplex numbers $A = a_1 + b_1i + c_1j + d_1k$ and $B = a_2 + b_2i + c_2j + d_2k$.
 In standard complex numbers, to convert the denominator into a real number, one simply multiplies the denominator by its complex conjugate. However, this is far from straightforward in this trinion system because the initial definition is set to $j^2 = i$. According to the multiplication expansion:
 
-$X_2 = a_2 + b_2i + c_2j + d_2k$ * $X_2' = a_2 - b_2i - c_2j - d_2k$ = 
+$X_2 (a_2 + b_2i + c_2j + d_2k)$ $\times$ $X_2'(a_2 - b_2i - c_2j - d_2k)$ = 
 
 *   **real part (a3)**： $a_3 =  a_2a_2 + b_2b_2 + c_2d_2 + d_2c_2$
 *   **i -  axis (b3)**： $b_3 = -a_2b_2 + b_2a_2 - c_2c_2 + d_2d_2$
@@ -527,7 +527,8 @@ $$ x^2 + y^2 = \left( -2a_2b_2 + c_2^2 - d_2^2 \right)^2 + \left( a_2^2 - b_2^2 
 
 Therefore, the final result is:
 
-* The resulting numerator from the previous stage is: $(a_1 + b_1i + c_1j + d_1k)$ $\times$ $(-b_2 + a_2i + d_2j - c_2k)$ $\times$ $(( -2a_2b_2 + c_2^2 - d_2^2) - ( a_2^2 - b_2^2 + 2c_2d_2)i)$
+* The resulting numerator from the previous stage is:
+  $(a_1 + b_1i + c_1j + d_1k)$ $\times$ $(-b_2 + a_2i + d_2j - c_2k)$ $\times$ $(( -2a_2b_2 + c_2^2 - d_2^2) - ( a_2^2 - b_2^2 + 2c_2d_2)i)$
 * The resulting denominator from the previous stage is: $$( -2a_2b_2 + c_2^2 - d_2^2)^2 + ( a_2^2 - b_2^2 + 2c_2d_2 )^2 $$
  
 **Here is a fascinating point: the expression inside the parentheses is the exact determinant of the matrix itself (please refer to Section 2.1).**
@@ -539,4 +540,110 @@ This result manifests an exquisite algebraic elegance. The final denominator res
 
 I wonder if everyone agrees with Gemini's insight?
 
-## 四. 開根號
+## 四. Square Root Extraction
+
+Apart from the four fundamental arithmetic operations, the matter I consider most crucial and care about the most is whether we can extract square roots! Extracting square roots can give birth to many mathematical entities, such as imaginary numbers or even this trionion system itself. I believed that solving this through Gaussian or Gauss-Jordan elimination held the highest probability of success (and was also the most convenient), so I requested Gemini's assistance in deriving and writing the Python code.
+
+The original source code is provided below for evaluation:
+
+
+    def gaussian_elimination(M, Y):
+        n = 4
+        
+        A = [M[i] + [Y[i]] for i in range(n)]
+    
+        for i in range(n):
+            max_row = i
+            for k in range(i + 1, n):
+                if abs(A[k][i]) > abs(A[max_row][i]):
+                    max_row = k
+            A[i], A[max_row] = A[max_row], A[i]
+        
+            if abs(A[i][i]) < 1e-12:
+                A[i][i] = 1e-12
+            
+            pivot = A[i][i]
+            for j in range(i, n + 1):
+                A[i][j] /= pivot
+            
+            for k in range(i + 1, n):
+                factor = A[k][i]
+                for j in range(i, n + 1):
+                    A[k][j] -= factor * A[i][j]              
+        
+        dX = [0.0] * n
+        for i in range(n - 1, -1, -1):
+            dX[i] = A[i][n]
+            for k in range(i + 1, n):
+                dX[i] -= A[i][k] * dX[k]
+        return dX
+
+    def sqrt_4d_algebra(a1, b1, c1, d1):        
+        v_norm = math.sqrt(b1**2 + c1**2 + d1**2)
+        if v_norm < 1e-9:
+            if a1 >= 0:
+                return [math.sqrt(a1), 0.0, 0.0, 0.0]
+            else:
+                return [0.0, math.sqrt(abs(a1)), 0.0, 0.0]
+        
+        q_norm = math.sqrt(a1**2 + b1**2 + c1**2 + d1**2)
+        x_a = math.sqrt((q_norm + abs(a1)) / 2)
+        scale = 0.5 / x_a if x_a != 0 else 0.1
+        x_b = b1 * scale
+        x_c = c1 * scale
+        x_d = d1 * scale    
+        
+        for _ in range(6):           
+            M = [
+                [2 * x_a, -2 * x_b, -2 * x_d, -2 * x_c],
+                [2 * x_b,  2 * x_a,  2 * x_c, -2 * x_d],
+                [2 * x_c, -2 * x_d,  2 * x_a, -2 * x_b],
+                [2 * x_d,  2 * x_c,  2 * x_b,  2 * x_a]
+            ]        
+          
+            current_a = x_a**2 - x_b**2 - 2 * x_c * x_d
+            current_b = 2 * x_a * x_b + x_c**2 - x_d**2
+            current_c = 2 * x_a * x_c - 2 * x_b * x_d
+            current_d = 2 * x_a * x_d + 2 * x_b * x_c        
+            
+            y_a = a1 - current_a
+            y_b = b1 - current_b
+            y_c = c1 - current_c
+            y_d = d1 - current_d
+            Y = [y_a, y_b, y_c, y_d]
+        
+           dX = gaussian_elimination(M, Y)
+        
+            x_a += dX[0]
+            x_b += dX[1]
+            x_c += dX[2]
+            x_d += dX[3]
+                
+            return [round(x_a, 6), round(x_b, 6), round(x_c, 6), round(x_d, 6)]
+
+#### Gemini數值求解流程解說:
+
+Gemini's Numerical Solver Process Explanation:
+According to Gemini, it utilizes the Newton-Raphson Matrix Iteration method from advanced numerical analysis, along with the Jacobian Matrix, to perform the computations. In each iteration, the system calculates the current residual vector $Y = Q - X_{\text{current}}^2$ and calls the Gaussian elimination algorithm to solve for the spatial correction vector $dX$ ($M \cdot dX = Y$), which then refines the coordinates. Typically, it takes only 5 to 6 iterations to achieve an extremely high algebraic precision of $10^{-12}$ under the limits of floating-point arithmetic. To be completely honest, such complex mathematical theories and code are far too profound for me—I am a strict pragmatist!
+However, after empirical testing, the sandbox calculator can indeed yield correct results for both real numbers and standard complex numbers ( a + bi ). Therefore, it is reasonable to infer that it functions properly to extract square roots for us. I actually tested a few specific values that I was most curious about, as detailed below:
+
+* The square root of \(1j\) is: \(0.653281 - 0.270598i + 0.653281j + 0.270598k\). Through back-squaring verification, and neglecting negligible floating-point deviations, the product indeed equals \(1j\).
+* The square root of \(1ij\) is: \(0.653281 + 0.270598i + 0.270598j + 0.653281k\). Similarly, through back-squaring verification, it indeed equals \(1ij\) when ignoring ultra-minor numerical rounding errors.
+
+**When performing continuous square root extractions on any non-zero-divisor trinion, their trajectories, expectedly, forcefully converge to the real number 1.0 (i.e., the coordinate $[1, 0, 0, 0]$） at a geometric rate. This further substantiates that this square root code system is fully accurate.**
+
+---
+
+## 五. Normalization (Normalize)
+
+Gemini suggested that I implement a Normalize operation button, which scales the vector proportionally back to a total modulus of unit length 1 when the values explode, making it easier to study. I wasn't entirely sure of its critical importance initially, but I built it anyway.
+Naturally, the Python implementation was handled by Gemini. It achieves this by dividing each of the four coefficients \((a, b, c, d)\) individually by the total modulus $\sqrt{a^2 + b^2 + c^2 + d^2}$.
+
+---
+
+## 六. Conclusion: Rather than saying this fascinating trinion system was created by me, it would be more accurate to say it was **discovered**. It possesses far too many wondrous coincidences and structural symmetries, leaving numerous areas highly deserving of deeper exploration and rigorous research. For instance:
+
+* 1. Can the initial concept of "extracting the square root of an angle" be mathematically validated and sustained? Conversely, what about exponentiation operations applied to angles?
+* 2. This hypercomplex system is merely built upon assumptions optimized for calculation convenience. We could also experiment with modifying the foundation to $j^2 = 1 + i$ (which represents a $45^\circ$ angle on the \(Xi\)-plane); by doing so, we would obtain the table shown below:
+ 
+  3. 
