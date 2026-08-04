@@ -393,7 +393,7 @@ Since matrix multiplication generally does not satisfy the commutative law, Gemi
     *   real part $a_3 = a_1a_2 - b_1b_2 - c_1d_2 - d_1c_2$
     *   i -  axis $b_3 = a_1b_2 + b_1a_2 + c_1c_2 - d_1d_2$
     *   j -  axis $c_3 = a_1c_2 - b_1d_2 + c_1a_2 - d_1b_2$
-    *   k -  axis 軸 $d_3 = a_1d_2 + b_1c_2 + c_1b_2 + d_1a_2$
+    *   k -  axis $d_3 = a_1d_2 + b_1c_2 + c_1b_2 + d_1a_2$
 
 ---
 
@@ -663,6 +663,6 @@ Whether the element $ij = j^3$ (the \(d\)-axis) truly qualifies as a fourth-dime
 > On the level of a vector space (the additive aspect): It absolutely qualifies as a fourth-dimensional vector basis. This is because the \(ij\)-axis cannot be synthesized through any linear combination of the first three > axes \((a, b, c)\). Throughout sequential arithmetic and Gaussian elimination, it must independently occupy the fourth linear dimension column.
 
 Therefore, the current research direction should perhaps shift toward exploring the mathematical meaning of non-vector algebraic cubing (self-multiplying 3 times). I might intend to approach this from the perspective of angles (even though this does not strictly conform to current mathematical frameworks) or trigonometric functions.
-* 5. Final Remarks: For the next stage of my work, I plan to dedicate time to investigating the project defined by $ ^2 = -i$. Since its configuration differs from this hypercomplex system by only a single negative sign, I am eager to discover whether it will generate a mathematical complementarity with the current system.
+* 5. Final Remarks: For the next stage of my work, I plan to dedicate time to investigating the project defined by $ j^2 = -i$. Since its configuration differs from this hypercomplex system by only a single negative sign, I am eager to discover whether it will generate a mathematical complementarity with the current system.
 
 From C.H. Lee, 2026.08.04
