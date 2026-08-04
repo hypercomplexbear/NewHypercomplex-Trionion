@@ -645,5 +645,25 @@ Naturally, the Python implementation was handled by Gemini. It achieves this by 
 
 * 1. Can the initial concept of "extracting the square root of an angle" be mathematically validated and sustained? Conversely, what about exponentiation operations applied to angles?
 * 2. This hypercomplex system is merely built upon assumptions optimized for calculation convenience. We could also experiment with modifying the foundation to $j^2 = 1 + i$ (which represents a $45^\circ$ angle on the \(Xi\)-plane); by doing so, we would obtain the table shown below:
- 
-  3. 
+* $j = (1 + i)/j$
+* $j^2 = 1 + i$
+* $j^3 = j + ij$
+* $j^4 = 1 + i + i(1 + i) = 2i$
+* $j^5 = 2ij$
+* $j^6 = 2(1 + i) = 2 + 2i$
+* $j^7 = 2j + 2ij$
+* $j^8 = 2(1 + i) + 2i(1 + i) = 4i$
+* $j^9 = 4ij$ 
+
+It can be observed that the system loses its 8-fold cyclic periodicity, and the \(ij\) term becomes decoupled—unable to be substituted—yet it exhibits a regularly increasing pattern. Could it be that only the $90^\circ$ orientations (\(i\) or \(-i\)) on the Gaussian complex plane possess this special property? This remains an open question.
+If the orientation is set to $0^\circ$ or $180^\circ$, it corresponds either to the standard imaginary number configuration with $j^2 = -1$, or a split-complex number configuration resembling $j^2 = 1$. These are hypercomplex number systems that have already been established and developed.
+
+*  3. We could also abandon the assumption that the \(j\)-axis remains perpendicular to the Gaussian complex plane. For instance, we could configure it to tilt at specific non-orthogonal angles, such as $30^\circ, 45^\circ, 54.74^\circ / 35.26^\circ, 60^\circ, 90^\circ$, or even the Earth's axial tilt of $23.5^{\circ }$. Although I have yet to formulate a mathematical representation for this approach, it undoubtedly promises to be another fascinating experiment.
+*  4. The precise algebraic nature of the \(ij\) element remains an active area of investigation. It appears to resist analysis via standard Clifford Algebra. According to the foundational rules of Clifford Algebra, the outer product of identical vectors vanishes; this would imply that $j \times j \times j = ij =0$. However, since \(ij\) itself is defined as the product of two distinct orthogonal vectors, \(i\) and \(j\), this leads to a structural contradiction.
+Whether the element $ij = j^3$ (the \(d\)-axis) truly qualifies as a fourth-dimensional vector remains a pivotal question. Gemini's perspective is as follows:
+> On the level of a vector space (the additive aspect): It absolutely qualifies as a fourth-dimensional vector basis. This is because the \(ij\)-axis cannot be synthesized through any linear combination of the first three > axes \((a, b, c)\). Throughout sequential arithmetic and Gaussian elimination, it must independently occupy the fourth linear dimension column.
+
+Therefore, the current research direction should perhaps shift toward exploring the mathematical meaning of non-vector algebraic cubing (self-multiplying 3 times). I might intend to approach this from the perspective of angles (even though this does not strictly conform to current mathematical frameworks) or trigonometric functions.
+* 5. Final Remarks: For the next stage of my work, I plan to dedicate time to investigating the project defined by $ ^2 = -i$. Since its configuration differs from this hypercomplex system by only a single negative sign, I am eager to discover whether it will generate a mathematical complementarity with the current system.
+
+From C.H. Lee, 2026.08.04
