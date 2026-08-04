@@ -385,7 +385,7 @@ $$ z_1(z_2z_3 + w_2\bar{w}_3) + w_1(\bar{w}_2z_3 + z_2\bar{w}_3) = z_1(z_2z_3) +
 
 ---
 
-#### 3.2.2.3 Structural Observation of the Commutative Law (Commutativity)
+#### c.2.2.3 Structural Observation of the Commutative Law (Commutativity)
 
 Since matrix multiplication generally does not satisfy the commutative law, Gemini actually provided an erroneous argument. Therefore, I requested a direct proof using the multiplication expansions instead, as demonstrated below:
 
@@ -405,7 +405,7 @@ Since matrix multiplication generally does not satisfy the commutative law, Gemi
 
 Since all component coefficients （ $a_n, b_n, c_n, d_n$  inside the formulas are pure real numbers, multiplication inherently and perfectly satisfies the commutative law within the field of real numbers. There is no reason to doubt that $a_1a_2 \neq a_2a_1$. **The commutative structure is thus proven.**
 
-### 3.3. Division Operation for Two Arbitrary Trionions 
+### c.3. Division Operation for Two Arbitrary Trionions 
 
 Initially, I was unable to derive the algebraic division formula using complex conjugates. However, driven by the desire to know whether division was even possible within this trinion system, I turned to Gemini for alternative approaches. Following our discussion, Gemini proposed the following solution, which successfully enabled us to implement division operations in our code.
 The following is the derivation assisted by Gemini:
@@ -540,7 +540,7 @@ This result manifests an exquisite algebraic elegance. The final denominator res
 
 I wonder if everyone agrees with Gemini's insight?
 
-## 四. Square Root Extraction
+## D. Square Root Extraction
 
 Apart from the four fundamental arithmetic operations, the matter I consider most crucial and care about the most is whether we can extract square roots! Extracting square roots can give birth to many mathematical entities, such as imaginary numbers or even this trionion system itself. I believed that solving this through Gaussian or Gauss-Jordan elimination held the highest probability of success (and was also the most convenient), so I requested Gemini's assistance in deriving and writing the Python code.
 
@@ -621,9 +621,8 @@ The original source code is provided below for evaluation:
                 
             return [round(x_a, 6), round(x_b, 6), round(x_c, 6), round(x_d, 6)]
 
-#### Gemini數值求解流程解說:
+#### Gemini's Numerical Solver Process Explanation:
 
-Gemini's Numerical Solver Process Explanation:
 According to Gemini, it utilizes the Newton-Raphson Matrix Iteration method from advanced numerical analysis, along with the Jacobian Matrix, to perform the computations. In each iteration, the system calculates the current residual vector $Y = Q - X_{\text{current}}^2$ and calls the Gaussian elimination algorithm to solve for the spatial correction vector $dX$ ($M \cdot dX = Y$), which then refines the coordinates. Typically, it takes only 5 to 6 iterations to achieve an extremely high algebraic precision of $10^{-12}$ under the limits of floating-point arithmetic. To be completely honest, such complex mathematical theories and code are far too profound for me—I am a strict pragmatist!
 However, after empirical testing, the sandbox calculator can indeed yield correct results for both real numbers and standard complex numbers ( a + bi ). Therefore, it is reasonable to infer that it functions properly to extract square roots for us. I actually tested a few specific values that I was most curious about, as detailed below:
 
@@ -634,14 +633,14 @@ However, after empirical testing, the sandbox calculator can indeed yield correc
 
 ---
 
-## 五. Normalization (Normalize)
+## E. Normalization (Normalize)
 
 Gemini suggested that I implement a Normalize operation button, which scales the vector proportionally back to a total modulus of unit length 1 when the values explode, making it easier to study. I wasn't entirely sure of its critical importance initially, but I built it anyway.
 Naturally, the Python implementation was handled by Gemini. It achieves this by dividing each of the four coefficients \((a, b, c, d)\) individually by the total modulus $\sqrt{a^2 + b^2 + c^2 + d^2}$.
 
 ---
 
-## 六. Conclusion: Rather than saying this fascinating trinion system was created by me, it would be more accurate to say it was **discovered**. It possesses far too many wondrous coincidences and structural symmetries, leaving numerous areas highly deserving of deeper exploration and rigorous research. For instance:
+## F. Conclusion: Rather than saying this fascinating trinion system was created by me, it would be more accurate to say it was **discovered**. It possesses far too many wondrous coincidences and structural symmetries, leaving numerous areas highly deserving of deeper exploration and rigorous research. For instance:
 
 * 1. Can the initial concept of "extracting the square root of an angle" be mathematically validated and sustained? Conversely, what about exponentiation operations applied to angles?
 * 2. This hypercomplex system is merely built upon assumptions optimized for calculation convenience. We could also experiment with modifying the foundation to $j^2 = 1 + i$ (which represents a $45^\circ$ angle on the \(Xi\)-plane); by doing so, we would obtain the table shown below:
