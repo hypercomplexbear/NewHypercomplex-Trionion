@@ -1,5 +1,11 @@
 > 🌐 [繁體中文版說明請點此](./README.md)
 
+### Sandbox Installation Guide
+* Step 1: Download the project code and extract the files.
+* Step 2: This system requires Python packages, including the Gradio web interface, NumPy matrix library, and Plotly 3D graphing engine. Open your Command Prompt (CMD) and run the following command: (pip install gradio numpy plotly).
+* Step 3: Once the installation is complete, directly launch app.py by double-clicking it (or by running python app.py in CMD). Copy the generated URL into your browser to access the user interface.
+
+
 ### Author's Preface
 
 Hello everyone. It is hard to sum up in a few words why I developed this new hypercomplex number. All I can say is that, through a series of coincidences, an ordinary person like me stumbled into this journey of researching hypercomplex numbers.I am no great mathematician, so for a long time during development, I relied on Gemini to teach me advanced mathematics. However, math is a profound subject, and learning solely through AI has its limits. Therefore, please forgive any mathematical inaccuracies you might find.
