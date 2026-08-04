@@ -57,7 +57,7 @@ Below is the multiplication table for individual powers of \(j\) with \(i\):
 * Coincidentally, a 3D space in Clifford algebra happens to require exactly 8 basis elements.
 * Even though it is a trinion, it still elegantly mirrors the power-of-two pattern inherent in the Cayley-Dickson construction—where $2^{3}$ yields exactly 8 dimensions. Simply put, this hypercomplex number is a trinion on the surface, but a quaternion at its core.
 * I am uncertain of this hypercomplex number's exact classification within group and ring theory. However, based on its structure, it should satisfy both the associative and distributive laws of multiplication. Yet, unlike standard quaternions, this system is actually commutative, since $ij = ji = j^3$. I will attempt to prove this later in the article.
-* Interestingly, \(ij\) appears to be related to the left-hand rule. Its precise function remains a mystery for now, which I will attempt to analyze later in the article.
+* Interestingly, \(ij\) appears to be related to the left-hand or right-hand rule. Its precise function remains a mystery for now, which I will attempt to analyze later in the article.
 
 ### a.3. Matrix Mapping (Derived with the assistance of Gemini)
 
@@ -345,11 +345,11 @@ $$ = \begin{bmatrix} z_1z_2 + w_1\bar{w}_2 & z_1w_2 + w_1z_2 \\\\ \bar{w}_1z_2 +
 
 </div>
 
-**Conclusion from Observation**: By applying the distributive law of standard complex numbers to compare the corresponding terms of the matrices on both sides (for example, expanding the first term on the left side yields $z_1(z_2+z_3) + w_1(\bar{w}_2+\bar{w}_3)$）, the structure after expanding the parentheses is perfectly identical to the right-hand expression. The distributive structure is thus proven.
+**Conclusion from Observation**: By applying the distributive law of standard complex numbers to compare the corresponding terms of the matrices on both sides (for example, expanding the first term on the left side yields $z_1(z_2+z_3) + w_1(\bar{w}_2+\bar{w}_3)$）, the structure after expanding the parentheses is perfectly identical to the right-hand expression. **The distributive structure is thus proven.**
 
 ---
 
-#### 3.2.2.2 tructural Observation of the Associative Law (Associativity)
+#### c.2.2.2 tructural Observation of the Associative Law (Associativity)
 
 To verify $(T_A \times T_B) \times T_C \stackrel{?}{=} T_A \times (T_B \times T_C)$, we directly observe the characteristic placement of the parentheses after multiplication:
 
@@ -381,9 +381,162 @@ $$ z_1(z_2z_3 + w_2\bar{w}_3) + w_1(\bar{w}_2z_3 + z_2\bar{w}_3) = z_1(z_2z_3) +
 
 </div>
 
-**Conclusion from Observation**: Following the same logic as the distributivity proof, since the results for the first row and first column are identical, it is reasonable to infer under the same matrix operation rules that all other rows and columns will yield the same results. The associative structure is thus proven.
+**Conclusion from Observation**: Following the same logic as the distributivity proof, since the results for the first row and first column are identical, it is reasonable to infer under the same matrix operation rules that all other rows and columns will yield the same results. **The associative structure is thus proven.**
 
 ---
 
+#### 3.2.2.3 Structural Observation of the Commutative Law (Commutativity)
 
-* 
+Since matrix multiplication generally does not satisfy the commutative law, Gemini actually provided an erroneous argument. Therefore, I requested a direct proof using the multiplication expansions instead, as demonstrated below:
+
+*   **The Four-Dimensional Expansion Components of $X_1 \times X_2$**：
+    *   real part $a_3 = a_1a_2 - b_1b_2 - c_1d_2 - d_1c_2$
+    *   i -  axis $b_3 = a_1b_2 + b_1a_2 + c_1c_2 - d_1d_2$
+    *   j -  axis $c_3 = a_1c_2 - b_1d_2 + c_1a_2 - d_1b_2$
+    *   k -  axis 軸 $d_3 = a_1d_2 + b_1c_2 + c_1b_2 + d_1a_2$
+
+---
+
+* **The Four-Dimensional Expansion Components of $X_2 \times X_1$**:
+    *   real part $a_3' = a_2a_1 - b_2b_1 - c_2d_1 - d_2c_1$
+    *   i -  axis $b_3' = a_2b_1 + b_2a_1 + c_2c_1 - d_2d_1$
+    *   j -  axis $c_3' = a_2c_1 - b_2d_1 + c_2a_1 - d_2b_1$
+    *   k -  axis $d_3' = a_2d_1 + b_2c_1 + c_2b_1 + d_2a_1$
+
+Since all component coefficients （ $a_n, b_n, c_n, d_n$  inside the formulas are pure real numbers, multiplication inherently and perfectly satisfies the commutative law within the field of real numbers. There is no reason to doubt that $a_1a_2 \neq a_2a_1$. **The commutative structure is thus proven.**
+
+### 3.3. Division Operation for Two Arbitrary Trionions 
+
+Initially, I was unable to derive the algebraic division formula using complex conjugates. However, driven by the desire to know whether division was even possible within this trinion system, I turned to Gemini for alternative approaches. Following our discussion, Gemini proposed the following solution, which successfully enabled us to implement division operations in our code.
+The following is the derivation assisted by Gemini:
+
+#### Transformation into a System of Linear Algebraic Equations
+
+Given two hypercomplex numbers $A = a_1 + b_1i + c_1j + d_1k$ and $B = a_2 + b_2i + c_2j + d_2k$, we seek to solve for the division result $C = X_a + X_bi + X_cj + X_dk$ such that:
+
+<div align="center">
+
+$$ \frac{A}{B} = C \implies A = C \times B $$
+
+</div>
+
+According to the aforementioned definition of hypercomplex multiplication, we expand each dimensional component of $C \times B$ and set them equal to the corresponding components of \(A\). Since the unknowns are the components of \(C\), denoted as $(X_a, X_b, X_c, X_d)$, we can reorganize this system of simultaneous equations into a standard linear system: $M \cdot C = A$. Here, \(M\) represents a $4 \times 4$ spatial geometric matrix composed of the components of the denominator \(B\).
+
+#### The Space-Specific 4x4 Division Matrix Structure
+
+Perfectly aligned with the multiplication metric, the form of the dynamically constructed augmented matrix \(M\) is as follows (where the final column represents the constant terms, namely the components of the numerator \(A\)):
+
+<div align="center">
+
+$$ M = \begin{bmatrix} 
+a_2 & -b_2 & -d_2 & -c_2 & \mathbf{a_1} \\\\ 
+b_2 & a_2 & c_2 & -d_2 & \mathbf{b_1} \\\\ 
+c_2 & -d_2 & a_2 & -b_2 & \mathbf{c_1} \\\\ 
+d_2 & b_2 & b_2 & a_2 & \mathbf{d_1} 
+\end{bmatrix} $$
+
+</div>
+
+#### Solving via Gauss-Jordan Elimination
+
+To solve this $4 \times 5$ augmented matrix, the backend algorithm implements standard row operations. The original Python source code is provided below for evaluation:
+
+    def divide_4d_algebra(a1, b1, c1, d1, a2, b2, c2, d2):
+        M = [
+            [a2, -b2, -d2, -c2, a1],
+            [b2,  a2,  c2, -d2, b1],
+            [c2, -d2,  a2, -b2, c1],
+            [d2,  c2,  b2,  a2, d1]
+        ]
+          n = 4
+        for i in range(n):
+            max_row = i
+            for r in range(i + 1, n):
+                if abs(M[r][i]) > abs(M[max_row][i]):
+                    max_row = r
+            M[i], M[max_row] = M[max_row], M[i]
+
+            if abs(M[i][i]) < 1e-12:
+                raise ZeroDivisionError("Mathematical meltdown detected! The input set has triggered a [zero-divisor] singularity; division yields no unique solution.\n""偵測到數學崩潰點！該組輸入觸發了【零因子】特異點，除法無    唯一解。")
+        
+            pivot = M[i][i]
+            for c in range(i, n + 1):
+                M[i][c] /= pivot
+            for r in range(n):
+                if r != i:
+                    factor = M[r][i]
+                    for c in range(i, n + 1):
+                        M[r][c] -= factor * M[i][c]
+                    
+        return [M[0][4], M[1][4], M[2][4], M[3][4]]
+
+</div>
+
+#### Within the sandbox calculator system, performing division operations on real numbers and the imaginary axis \(i\) yields verified, correct results; therefore, it is reasonable to infer that this algorithm can accurately determine the division solution for any trinion. We can closely observe this behavior through the concept of reciprocals:
+
+* Let $j \times j^{-1}$ = 1; using the sandbox calculator, the reciprocal of \(j\) is determined to be \(-ij\); 
+* let $ij \times (ij)^{-1}$ = 1; using the sandbox calculator, the reciprocal of \(ij\) is found to be \(-j\). 
+These outputs are in perfect agreement with the hand-calculated analytical results.
+
+#### (Supplement) Major Breakthrough: Complementing the Algebraic Conjugate Division Method (Independent Derivation)
+
+**After numerous attempts, I have finally derived by hand a method to rationalize the algebraic denominator into a pure real number. The detailed explanation is presented below:**
+
+Given two hypercomplex numbers $A = a_1 + b_1i + c_1j + d_1k$ and $B = a_2 + b_2i + c_2j + d_2k$.
+In standard complex numbers, to convert the denominator into a real number, one simply multiplies the denominator by its complex conjugate. However, this is far from straightforward in this trinion system because the initial definition is set to $j^2 = i$. According to the multiplication expansion:
+
+$X_2 = a_2 + b_2i + c_2j + d_2k$ * $X_2' = a_2 - b_2i - c_2j - d_2k$ = 
+
+*   **real part (a3)**： $a_3 =  a_2a_2 + b_2b_2 + c_2d_2 + d_2c_2$
+*   **i -  axis (b3)**： $b_3 = -a_2b_2 + b_2a_2 - c_2c_2 + d_2d_2$
+*   **j -  axis (c3)**： $c_3 = -a_2c_2 + b_2d_2 + c_2a_2 + d_2b_2$
+*   **k -  axis (d3)**： $d_3 = -a_2d_2 - b_2c_2 - c_2b_2 + d_2a_2$
+
+It can be observed that the \(j\) and \(ij\) terms do not cancel each other out. However, this hypercomplex number system possesses a marvelous supersymmetry, which inspired me to experiment with swapping the coefficients!
+
+If the \(j\) and \(ij\) terms in the denominator can be eliminated to reduce the expression into a standard x +yi form, we can then apply a secondary conjugation process!
+
+The empirical results of this attempt are documented below:
+
+For the denominator $B = a_2 + b_2i + c_2j + d_2k$, if we simultaneously multiply both the numerator and the denominator by the conjugate factor $B' = -b_2 + a_2i + d_2j - c_2k$, and substitute this into the multiplication metric expansion:
+
+*   **real part (a3)**： $a_3 = -a_2b_2 - b_2a_2 + c_2c_2 - d_2d_2$
+*   **i -  axis (b3)**： $b_3 = +a_2a_2 - b_2b_2 + c_2d_2 + d_2c_2$
+*   **j -  axis (c3)**： $c_3 = +a_2d_2 + b_2c_2 - c_2b_2 - d_2a_2$
+*   **k -  axis (d3)**： $d_3 = -a_2c_2 + b_2d_2 + c_2a_2 - d_2b_2$
+
+It can be observed that the \(j\) and \(ij\) terms are completely eliminated, leaving only:
+<div align="center">
+    
+$$ B \times B' = \left( -2a_2b_2 + c_2^2 - d_2^2 \right) + \left( a_2^2 - b_2^2 + 2c_2d_2 \right)i $$
+
+</div>
+
+**Now, we apply a secondary complex conjugation to fully rationalize the denominator into a pure real number:**
+
+* The resulting numerator from the previous stage is: $(a_1 + b_1i + c_1j + d_1k)$ $\times$ $(-b_2 + a_2i + d_2j - c_2k)$ 
+* The resulting denominator from the previous stage is:  $$B \times B' = \left( -2a_2b_2 + c_2^2 - d_2^2 \right) + \left( a_2^2 - b_2^2 + 2c_2d_2 \right)i$$
+
+According to the rules of complex conjugates: $(x - yi)*(x + yi) = x^2 + y^2$, the denominator converges into a pure real number:
+
+<div align="center">
+
+$$ x^2 + y^2 = \left( -2a_2b_2 + c_2^2 - d_2^2 \right)^2 + \left( a_2^2 - b_2^2 + 2c_2d_2 \right)^2 $$
+
+</div>
+
+Therefore, the final result is:
+
+* The resulting numerator from the previous stage is: $(a_1 + b_1i + c_1j + d_1k)$ $\times$ $(-b_2 + a_2i + d_2j - c_2k)$ $\times$ $(( -2a_2b_2 + c_2^2 - d_2^2) - ( a_2^2 - b_2^2 + 2c_2d_2)i)$
+* The resulting denominator from the previous stage is: $$( -2a_2b_2 + c_2^2 - d_2^2)^2 + ( a_2^2 - b_2^2 + 2c_2d_2 )^2 $$
+ 
+**Here is a fascinating point: the expression inside the parentheses is the exact determinant of the matrix itself (please refer to Section 2.1).**
+Gemini provided me with the following conclusion: 
+#### Geometric Significance and the Analytical Division Closed-Loop
+This result manifests an exquisite algebraic elegance. The final denominator resolves into the sum of squares of two "zero-divisor characteristic equations":
+* 1. If and only if the denominator \(B\) itself is a zero divisor, both equations will simultaneously equal 0, causing the overall denominator to become 0. In this scenario, division is indeed undefined, which perfectly aligns with the definition of zero divisors.
+* 2. Under any other normal coordinates, this denominator is guaranteed to be a positive real number.
+
+I wonder if everyone agrees with Gemini's insight?
+
+## 四. 開根號
