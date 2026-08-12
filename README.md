@@ -603,7 +603,7 @@ $(a^2 - b^2 - 2cd)i + (-c^2 + d^2 - 2ab) + 2(bd - ac)ij - 2(-ad - bc)j$
 整理後同樣得到: $(d^2 - c^2 - 2ab) + (a^2 - b^2 - 2cd)i + 2(ad + bc)j + 2(bd - ac)k$
 
 ---
-同時我們已知 $T \times T* = |z\|^2$ ； $T' = i \times T*$，則 $T \times T' = T \times i \times T* = i \times |z\|^2$
+同時我們已知 $T \times T* = |z\|^2$ ； $T' = i \times T*$，則 $T \times T' = T \times i \times T* = i \times |z\|^2$，與除法推導的 $B \times B'$ 結果一致。
 
 ## 四. 開根號 
 
