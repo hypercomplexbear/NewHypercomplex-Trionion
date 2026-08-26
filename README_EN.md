@@ -236,8 +236,7 @@ Observing the first form, I listed a set of zero divisors using a base unit leng
 * Every face of this tetrahedron is a right-angled triangle.
 * This tetrahedron contains all the special angles $(30^\circ, 45^\circ, 54.74^\circ / 35.26^\circ, 60^\circ, \text{ and } 90^\circ)$. Among them, the $(54.74^{\circ }\) / \(35.26^{\circ }\)$ angle is what Gemini refers to as the "Magic Angle." In numerous technological applications, this specific angle is utilized to eliminate interference signals (such as in nuclear magnetic resonance, MRI). Is this merely a coincidence?
 * The lengths of the edges of this tetrahedron can be expressed as a sequence of square roots: ( $\sqrt{1}$, $\sqrt{2}$, $\sqrt{3}$, $\sqrt{4}$ ), which is precisely the Spiral of Theodorus (also known as the square root spiral).
-* Gemini told me that the zero divisors in this hypercomplex system can be viewed as a type of light cone. I don't fully understand how it suddenly connected to Hermann Minkowski's spacetime theory and light cones, though it did try to explain it to me. The $(45^{\circ }\)$ angle seems to be a crucial angle for the light cone.
-* Interestingly, the companion zero divisor to this set of zero divisors (1, i, $\sqrt{2}j$) is (1, i, - $\sqrt{2}j$)—which is the exact example from Section 2.1. These two sets of coordinate points map to each other across the \(X\)-axis, and the angles of their moduli are both $(45^{\circ }\)$. Is this merely a coincidence? Could they be forming the shape of a local light cone?Therefore, it is reasonable to infer that the line connecting every point of T = a + ai + $\sqrt{2}aj$ and the line connecting every point of T = a + ai - $\sqrt{2}aj$ constitute two intersecting \(X\)-shaped zero-divisor boundaries passing through the origin. Coincidentally, they resemble the shape of a light cone. Is there a way to locate other zero-divisor lines in this space and observe whether the collection of all zero-divisor lines forms a complete light cone? This will be both a fascinating and challenging endeavor!
+* According to Gemini, the zero divisors of this hypercomplex system function as a form of light cone. Detailed research and analysis to follow in the supplementary chapters.
 
 </div>
 
@@ -537,14 +536,54 @@ Therefore, the final result is:
   $(a_1 + b_1i + c_1j + d_1k)$ $\times$ $(-b_2 + a_2i + d_2j - c_2k)$ $\times$ $(( -2a_2b_2 + c_2^2 - d_2^2) - ( a_2^2 - b_2^2 + 2c_2d_2)i)$
 * The resulting denominator from the previous stage is: $$( -2a_2b_2 + c_2^2 - d_2^2)^2 + ( a_2^2 - b_2^2 + 2c_2d_2 )^2 $$
  
-**Here is a fascinating point: the expression inside the parentheses is the exact determinant of the matrix itself (please refer to Section 2.1).**
-Gemini provided me with the following conclusion: 
-#### Geometric Significance and the Analytical Division Closed-Loop
-This result manifests an exquisite algebraic elegance. The final denominator resolves into the sum of squares of two "zero-divisor characteristic equations":
-* 1. If and only if the denominator \(B\) itself is a zero divisor, both equations will simultaneously equal 0, causing the overall denominator to become 0. In this scenario, division is indeed undefined, which perfectly aligns with the definition of zero divisors.
-* 2. Under any other normal coordinates, this denominator is guaranteed to be a positive real number.
+**Interestingly, the expression inside the parentheses is exactly the determinant with its real coefficients swapped (please refer to Section 2.1).**
 
-I wonder if everyone agrees with Gemini's insight?
+</div>
+
+#### updated (2026.08.11)
+
+Gemini mentioned that the conjugate I found, $B' = -b_2 + a_2i + d_2j - c_2k$, is called a skew-conjugate, whereas the true conjugate of a trionion is $T* = a + bi - cj - dk$ (see Supplement 1.4: Derivation of the Norm Definition for details).
+
+Substituting $T = a_1 + b_1i + c_1j + d_1k \times T* = a_2 + b_2i - c_2j - d_2k$ into the multiplication expansion, the verification is as follows:
+
+*   **real part (a3)**： $a_3 =  a_1a_2 - b_1b_2 + c_1d_2 + d_1c_2$
+*   **i -  axis (b3)**： $b_3 = +a_1b_2 + b_1a_2 - c_1c_2 + d_1d_2$
+*   **j -  axis (c3)**： $c_3 = -a_1c_2 + b_1d_2 + c_1a_2 - d_1b_2$
+*   **k -  axis (d3)**： $d_3 = -a_1d_2 - b_1c_2 + c_1b_2 + d_1a_2$
+
+It can be observed that the $j$ and $ij$ terms are completely canceled out, leaving only the determinant: $(a^2 - b^2 + 2cd) + (2ab - c^2 + d^2)i$. Interestingly, the coefficients of the real part and the imaginary part $i$ are exactly opposite to the results obtained from the skew-conjugate!
+
+Now, let's see what the multiplication of the skew-conjugate (denoted as (T')) below) and the complex conjugate (T*) yields!
+
+---
+
+Substituting $T* \times T' = (a_1 + b_1i - c_1j - d_1k) \times (-b_2 + a_2i + d_2j - c_2k)$ into the expanded multiplication yields:
+
+*   **real part (a3)**： $a_3 = -a_1b_2 - b_1a_2 - c_1c_2 + d_1d_2$
+*   **i -  axis (b3)**： $b_3 = +a_1a_2 - b_1b_2 - c_1d_2 - d_1c_2$
+*   **j -  axis (c3)**： $c_3 = +a_1d_2 + b_1c_2 + c_1b_2 + d_1a_2$
+*   **k -  axis (d3)**： $d_3 = -a_1c_2 + b_1d_2 - c_1a_2 + d_1b_2$
+
+After simplifying, we obtain: $(d^2 - c^2 - 2ab) + (a^2 - b^2 - 2cd)i + 2(ad + bc)j + 2(bd - ac)k$
+
+We can also rewrite the formula as: $T* \times T' = T* \times i \times T* = i \times(T* )^2$.
+
+Substituting $T* = a_1 + b_1i - c_1j - d_1k \times T* = a_2 + b_2i - c_2j - d_2k$ into the expanded multiplication yields:
+
+*   **real part (a3)**： $a_3 =  a_1a_2 - b_1b_2 - c_1d_2 - d_1c_2$
+*   **i -  axis (b3)**： $b_3 = +a_1b_2 + b_1a_2 + c_1c_2 - d_1d_2$
+*   **j -  axis (c3)**： $c_3 = -a_1c_2 + b_1d_2 - c_1a_2 + d_1b_2$
+*   **k -  axis (d3)**： $d_3 = -a_1d_2 - b_1c_2 - c_1b_2 - d_1a_2$
+
+After simplifying, we obtain: $(T* )^2 = (a^2 - b^2 - 2cd) + (c^2 - d^2 + 2ab)i + 2(bd - ac)j + 2(-ad - bc)k$, and then multiplied by i as follows:
+
+$(a^2 - b^2 - 2cd)i + (-c^2 + d^2 - 2ab) + 2(bd - ac)ij - 2(-ad - bc)j$
+
+After simplifying, we obtain the same result: $(d^2 - c^2 - 2ab) + (a^2 - b^2 - 2cd)i + 2(ad + bc)j + 2(bd - ac)k$
+
+---
+Meanwhile, since we already know that  $T \times T* = |z\|^2$ ； $T' = i \times T*$，then $T \times T' = T \times i \times T* = i \times |z\|^2$. This is perfectly consistent with the result of $B \times B'$ derived from the division process.
+---
 
 ## D. Square Root Extraction
 
@@ -648,7 +687,7 @@ Naturally, the Python implementation was handled by Gemini. It achieves this by 
 
 ## F. Conclusion: Rather than saying this fascinating trinion system was created by me, it would be more accurate to say it was **discovered**. It possesses far too many wondrous coincidences and structural symmetries, leaving numerous areas highly deserving of deeper exploration and rigorous research. For instance:
 
-* 1. Can the initial concept of "extracting the square root of an angle" be mathematically validated and sustained? Conversely, what about exponentiation operations applied to angles?
+* 1. I know that directly taking the square root of an angle is generally considered mathematically invalid. However, facts show that this concept can lead to a series of fascinating hypercomplex number structures. So, can this initial idea of taking the square root of an angle actually be mathematically justified? Conversely, what about raising an angle to a power??
 * 2. This hypercomplex system is merely built upon assumptions optimized for calculation convenience. We could also experiment with modifying the foundation to $j^2 = 1 + i$ (which represents a $45^\circ$ angle on the \(Xi\)-plane); by doing so, we would obtain the table shown below:
 * $j = (1 + i)/j$
 * $j^2 = 1 + i$
@@ -666,9 +705,72 @@ If the orientation is set to $0^\circ$ or $180^\circ$, it corresponds either to 
 *  3. We could also abandon the assumption that the \(j\)-axis remains perpendicular to the Gaussian complex plane. For instance, we could configure it to tilt at specific non-orthogonal angles, such as $30^\circ, 45^\circ, 54.74^\circ / 35.26^\circ, 60^\circ, 90^\circ$, or even the Earth's axial tilt of $23.5^{\circ }$. Although I have yet to formulate a mathematical representation for this approach, it undoubtedly promises to be another fascinating experiment.
 *  4. The precise algebraic nature of the \(ij\) element remains an active area of investigation. It appears to resist analysis via standard Clifford Algebra. According to the foundational rules of Clifford Algebra, the outer product of identical vectors vanishes; this would imply that $j \times j \times j = ij =0$. However, since \(ij\) itself is defined as the product of two distinct orthogonal vectors, \(i\) and \(j\), this leads to a structural contradiction.
 Whether the element $ij = j^3$ (the \(d\)-axis) truly qualifies as a fourth-dimensional vector remains a pivotal question. Gemini's perspective is as follows:
-> On the level of a vector space (the additive aspect): It absolutely qualifies as a fourth-dimensional vector basis. This is because the \(ij\)-axis cannot be synthesized through any linear combination of the first three > axes \((a, b, c)\). Throughout sequential arithmetic and Gaussian elimination, it must independently occupy the fourth linear dimension column.
+> On the level of a vector space (the additive aspect): It absolutely qualifies as a fourth-dimensional vector basis. This is because the \(ij\)-axis cannot be synthesized through any linear combination of the first three axes (a, b, c). Throughout sequential arithmetic and Gaussian elimination, it must independently occupy the fourth linear dimension column.
 
-Therefore, the current research direction should perhaps shift toward exploring the mathematical meaning of non-vector algebraic cubing (self-multiplying 3 times). I might intend to approach this from the perspective of angles (even though this does not strictly conform to current mathematical frameworks) or trigonometric functions.
-* 5. Final Remarks: For the next stage of my work, I plan to dedicate time to investigating the project defined by $ j^2 = -i$. Since its configuration differs from this hypercomplex system by only a single negative sign, I am eager to discover whether it will generate a mathematical complementarity with the current system.
+In chained arithmetic operations and Gaussian elimination, it must independently occupy the fourth linear dimension field. Therefore, at this stage, it might be necessary to seek the definition of '(the meaning of non-vector algebra multiplied by itself three times).' I intend to approach this from angles (though it conflicts with current mathematical conventions) or trigonometric functions. We can also observe from all the preceding derivations that if $ij$ is not designed as the fourth axis of the algebra, it becomes impossible to yield all the correct results. This currently justifies why I treat it as a hidden projection operator in the sandbox calculator.
+
+* 5. Hypercomplex numbers are not part of mainstream mathematics today. The higher the complexity, the more algebraic axioms must be sacrificed, and the emergence of zero divisors often renders them impractical. Hamilton’s quaternions are the exception, proving his genius. A century later, they excel in handling 3D rotations across the gaming industry. This begs the question: could the alternative hypercomplex systems we are discovering or developing today occupy a vital position in human technology a hundred years from now?
+ 
+* 6. On Conjectures: I strongly intuitive that hypercomplex numbers will provide a key breakthrough for the Riemann hypothesis. This comes from a direct intuition: if a specific hypercomplex system can model both boson and fermion behaviors simultaneously, and since fermion energy levels are intimately related to the Riemann zeta function, some crucial clues must exist between them.
+ 
+* 7. Next steps: I will focus on a project exploring $j^2 = -i$. Because this setting differs from the current hypercomplex system by only a negative sign, I aim to see if it acts as a complementary counterpart to this system.
 
 From C.H. Lee, 2026.08.04
+
+---
+
+updated on (2026.08.26)
+
+### 1.4. Derivation of the Norm Definition
+
+In my previous discussions with Gemini, I mistakenly assumed that the norm of a hypercomplex number would naturally be $(\sqrt{a^{2}+b^{2}+c^{2}+d^{2}}\)$. However, this turned out to be completely incorrect. I recently gained a clearer understanding of Euclidean vs. non-Euclidean geometric spaces, and this trionion-based hypercomplex system is evidently non-Euclidean. Therefore, I am introducing a correction here.To preserve algebraic integrity, the norm in a non-Euclidean geometric space is defined as the product of a number and its conjugate $(Z \times Z*)$. Consequently, I needed to find the complex conjugate of $T = a + bi + cj + dk$. Gemini suggested using the adjugate matrix to find it, and the derivation process is as follows:
+
+<div align="center">
+   
+$(M\cdot \text{adj}(M)=\det (M)\cdot I\)$
+
+</div>
+
+Given the matrix representation of the trinion as follows:
+
+<div align="center">
+
+$$ \text{The Matrix of } T = \begin{bmatrix} a + bi & ci - d \\\\ c + di & a + bi \end{bmatrix} $$
+
+</div>
+
+Then, by swapping the elements on the main diagonal and negating the elements on the anti-diagonal, the matrix becomes:
+
+<div align="center">
+
+$$ \text{The Matrix of } T = \begin{bmatrix} a + bi & -ci + d \\\\ -c - di & a + bi \end{bmatrix} $$
+
+</div>
+
+##### We obtain the complex conjugate of the trionion: $T* = a + bi - cj - dk$
+
+Substituting $T = a_1 + b_1i + c_1j + d_1k \times T* = a_2 + b_2i - c_2j - d_2k$ into the multiplication expansion, the verification is as follows:
+
+*   **real part (a3)**： $a_3 =  a_1a_2 - b_1b_2 + c_1d_2 + d_1c_2$
+*   **i -  axis (b3)**： $b_3 = +a_1b_2 + b_1a_2 - c_1c_2 + d_1d_2$
+*   **j -  axis (c3)**： $c_3 = -a_1c_2 + b_1d_2 + c_1a_2 - d_1b_2$
+*   **k -  axis (d3)**： $d_3 = -a_1d_2 - b_1c_2 + c_1b_2 + d_1a_2$
+
+**The result equals the determinant of the matrix: $(a^2 - b^2 + 2cd) + (2ab - c^2 + d^2)i$**
+
+**Therefore, the squared norm of the hypercomplex number in this system is defined as the determinant of its matrix:**
+
+<div align="center">
+   
+$$\|z\|^2 = z \cdot z* = (a^2 - b^2 + 2cd) + (2ab - c^2 + d^2)i$$
+
+</div>
+
+A unique feature of this determinant is that it still contains both the real part and the imaginary part $i$. To eliminate $i$, a secondary conjugation must be applied, just as in the division process. This yields the 4th power of the norm: $\|z\|^4 = (a^2 - b^2 + 2cd)^2 + (2ab - c^2 + d^2)^2$. Consequently, the norm $\|z\|$ must be defined as the corresponding 4th root to satisfy the geometric scaling ratio.
+
+<div align="center">
+
+</div>
+
+#####  Note: The sandbox calculator still displays both the traditional Euclidean norm and the new determinant norm side-by-side for comparison
+**Therefore, the norm is defined as: $\|z\| = \sqrt[4]{(a^2 - b^2 + 2cd)^2 + (2ab - c^2 + d^2)^2}$**
