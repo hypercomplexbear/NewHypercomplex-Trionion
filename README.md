@@ -977,3 +977,36 @@ $$f_2(\theta) = \frac{\theta^2}{2!} - \frac{\theta^6}{6!} + \frac{\theta^{10}}{1
 $$f_3(\theta) = \frac{\theta^3}{3!} - \frac{\theta^7}{7!} + \frac{\theta^{11}}{11!} - \frac{\theta^{15}}{15!} + \dots$$
 
 ---
+### 1. 各分量之精確閉合形式（Closed-Form Expressions）
+
+經過級數疊加與角度縮放驗算，各分量 $f_k(\theta)$ 之閉合解如下：
+
+* **常數項分量 $f_0(\theta)$ （ $1$ 軸，次方 $0, 4, 8, 12 \dots$）：**
+  $$f_0(\theta) = \cos\left(\frac{\theta}{\sqrt{2}}\right) \cosh\left(\frac{\theta}{\sqrt{2}}\right) = 1 - \frac{\theta^4}{4!} + \frac{\theta^8}{8!} - \frac{\theta^{12}}{12!} + \dots$$
+
+* ** $j$ 項分量 $f_1(\theta)$ （ $j$ 軸，次方 $1, 5, 9, 13 \dots$）：**
+  $$f_1(\theta) = \frac{1}{\sqrt{2}} \left[ \sin\left(\frac{\theta}{\sqrt{2}}\right) \cosh\left(\frac{\theta}{\sqrt{2}}\right) + \cos\left(\frac{\theta}{\sqrt{2}}\right) \sinh\left(\frac{\theta}{\sqrt{2}}\right) \right] = \theta - \frac{\theta^5}{5!} + \frac{\theta^9}{9!} - \frac{\theta^{13}}{13!} + \dots$$
+
+* ** $i$ 項分量 $f_2(\theta)$ （ $i$ 軸，次方 $2, 6, 10, 14 \dots$）：**
+  $$f_2(\theta) = \sin\left(\frac{\theta}{\sqrt{2}}\right) \sinh\left(\frac{\theta}{\sqrt{2}}\right) = \frac{\theta^2}{2!} - \frac{\theta^6}{6!} + \frac{\theta^{10}}{10!} - \frac{\theta^{14}}{14!} + \dots$$
+
+* ** $k$ 項分量 $f_3(\theta)$ （ $k$ 軸，次方 $3, 7, 11, 15 \dots$）：**
+  $$f_3(\theta) = \frac{1}{\sqrt{2}} \left[ \sin\left(\frac{\theta}{\sqrt{2}}\right) \cosh\left(\frac{\theta}{\sqrt{2}}\right) - \cos\left(\frac{\theta}{\sqrt{2}}\right) \sinh\left(\frac{\theta}{\sqrt{2}}\right) \right] = \frac{\theta^3}{3!} - \frac{\theta^7}{7!} + \frac{\theta^{11}}{11!} - \frac{\theta^{15}}{15!} + \dots$$
+
+---
+
+### 2. 奇數分量之交叉線性組合關聯
+
+針對奇數次方分量 $f_1(\theta)$ 與 $f_3(\theta)$，可由三角與雙曲函數之交叉乘積透過加減法相互組合解出：
+
+$$\sqrt{2} \sin\left(\frac{\theta}{\sqrt{2}}\right) \cosh\left(\frac{\theta}{\sqrt{2}}\right) = f_1(\theta) + f_3(\theta)$$
+
+$$\sqrt{2} \cos\left(\frac{\theta}{\sqrt{2}}\right) \sinh\left(\frac{\theta}{\sqrt{2}}\right) = f_1(\theta) - f_3(\theta)$$
+
+---
+
+### 3. 完整歐拉公式表示式
+
+綜合上述四個空間基底分量，8 階超複數之指數型態最終表示為：
+
+$$e^{j\theta} = \cos\left(\frac{\theta}{\sqrt{2}}\right)\cosh\left(\frac{\theta}{\sqrt{2}}\right) + j \cdot \frac{1}{\sqrt{2}} \left[ \sin\left(\frac{\theta}{\sqrt{2}}\right)\cosh\left(\frac{\theta}{\sqrt{2}}\right) + \cos\left(\frac{\theta}{\sqrt{2}}\right)\sinh\left(\frac{\theta}{\sqrt{2}}\right) \right] + i \cdot \sin\left(\frac{\theta}{\sqrt{2}}\right)\sinh\left(\frac{\theta}{\sqrt{2}}\right) + k \cdot \frac{1}{\sqrt{2}} \left[ \sin\left(\frac{\theta}{\sqrt{2}}\right)\cosh\left(\frac{\theta}{\sqrt{2}}\right) - \cos\left(\frac{\theta}{\sqrt{2}}\right)\sinh\left(\frac{\theta}{\sqrt{2}}\right) \right]$$
