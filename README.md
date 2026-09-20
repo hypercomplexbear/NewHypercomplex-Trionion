@@ -943,3 +943,37 @@ $$|q\|_r = \sqrt[4]{(a^2 + b^2 + c^2 + d^2)^2 - 4(ab - cd)^2}$$
 * 由a = 0帶入，可以得到 若 c = 0，則  b = d = 0；若d = 0，則得到 c = $\pm b$
 * 由c = 0帶入，可以得到 若 a = 0，則  b = d = 0；若b = 0，則得到 a = $\pm d$
 
+---
+
+#### 關於歐拉公式
+我嘗試讓gemini利用泰勒展開式來分析T的歐拉公式，如下:
+將 $x = j\theta$ 帶入指數函數 $(e^{x}\)$ 的麥克勞林級數:
+
+$$e^{j\theta} = \sum_{n=0}^{\infty} \frac{(j\theta)^n}{n!} = 1 + j\theta + \frac{j^2\theta^2}{2!} + \frac{j^3\theta^3}{3!} + \frac{j^4\theta^4}{4!} + \frac{j^5\theta^5}{5!} + \frac{j^6\theta^6}{6!} + \frac{j^7\theta^7}{7!} + \dots$$
+
+將上述次方簡化結果代回級數，並按基底 $\{1, j, i, ij\}$ 進行四元拆分重組：
+
+$$e^{j\theta} = f_0(\theta) + j \cdot f_1(\theta) + i \cdot f_2(\theta) + k \cdot f_3(\theta)$$
+
+根據本數系定義之虛數單位性質 $j^2 = i$ 且 $i^2 = -1$，可得 $j$ 的高階乘冪呈現 8 階循環（$j^4 = -1, j^8 = 1$）：
+
+* $j^0 = 1$
+* $j^1 = j$
+* $j^2 = i$
+* $j^3 = ij = k$
+* $j^4 = -1$
+* $j^5 = -j$
+* $j^6 = -i$
+* $j^7 = -ij = -k$
+
+其中各分量級數展開如下：
+
+$$f_0(\theta) = 1 - \frac{\theta^4}{4!} + \frac{\theta^8}{8!} - \frac{\theta^{12}}{12!} + \dots$$
+
+$$f_1(\theta) = \theta - \frac{\theta^5}{5!} + \frac{\theta^9}{9!} - \frac{\theta^{13}}{13!} + \dots$$
+
+$$f_2(\theta) = \frac{\theta^2}{2!} - \frac{\theta^6}{6!} + \frac{\theta^{10}}{10!} - \frac{\theta^{14}}{14!} + \dots$$
+
+$$f_3(\theta) = \frac{\theta^3}{3!} - \frac{\theta^7}{7!} + \frac{\theta^{11}}{11!} - \frac{\theta^{15}}{15!} + \dots$$
+
+---
