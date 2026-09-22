@@ -981,7 +981,152 @@ $$f_3(\theta) = \frac{\theta^3}{3!} - \frac{\theta^7}{7!} + \frac{\theta^{11}}{1
 
 經過級數疊加與角度縮放驗算，各分量 $f_k(\theta)$ 之閉合解如下：
 
-* **常數項分量 $f_0(\theta)$ （ $1$ 軸，次方 $0, 4, 8, 12 \dots$）：**
+#### 實數項分量 $f_0(\theta)$ 之泰勒展開詳細推導
+
+定義角度縮放參數 $\alpha = \frac{\theta}{\sqrt{2}}$，將三角函數與雙曲函數分別進行泰勒級數展開：
+
+$$\cos(\alpha) = 1 - \frac{\alpha^2}{2!} + \frac{\alpha^4}{4!} - \frac{\alpha^6}{6!} + \frac{\alpha^8}{8!} - \dots$$
+
+$$\cosh(\alpha) = 1 + \frac{\alpha^2}{2!} + \frac{\alpha^4}{4!} + \frac{\alpha^6}{6!} + \frac{\alpha^8}{8!} + \dots$$
+
+兩式相乘並按 $\alpha$ 的偶數次方收集同類項：
+
+$$\begin{aligned}
+\cos(\alpha)\cosh(\alpha) = &\ 1 \cdot 1 \\
+&+ \left(\frac{1}{2!} - \frac{1}{2!}\right)\alpha^2 \\
+&+ \left(\frac{1}{4!} - \frac{1}{2! \cdot 2!} + \frac{1}{4!}\right)\alpha^4 \\
+&+ \left(\frac{1}{6!} - \frac{1}{4! \cdot 2!} + \frac{1}{2! \cdot 4!} - \frac{1}{6!}\right)\alpha^6 \\
+&+ \left(\frac{1}{8!} - \frac{1}{6! \cdot 2!} + \frac{1}{4! \cdot 4!} - \frac{1}{2! \cdot 6!} + \frac{1}{8!}\right)\alpha^8 - \dots
+\end{aligned}$$
+
+計算各係數數值：
+
+* $\alpha^2$ 項係數： $\frac{1}{2} - \frac{1}{2} = 0$（精確抵消）
+* $\alpha^4$ 項係數： $\frac{1}{24} - \frac{1}{4} + \frac{1}{24} = -\frac{1}{6}$
+* $\alpha^6$ 項係數： $\frac{1}{720} - \frac{1}{48} + \frac{1}{48} - \frac{1}{720} = 0$（精確抵消）
+* $\alpha^8$ 項係數： $\frac{1}{40320} - \frac{1}{1440} + \frac{1}{576} - \frac{1}{1440} + \frac{1}{40320} = \frac{1}{2520}$
+
+將 $\alpha = \frac{\theta}{\sqrt{2}}$ 代回上式：
+
+* $\alpha^4$ 項： $-\frac{1}{6} \left(\frac{\theta}{\sqrt{2}}\right)^4 = -\frac{1}{6} \cdot \frac{\theta^4}{4} = -\frac{\theta^4}{24} = -\frac{\theta^4}{4!}$
+* $\alpha^8$ 項： $\frac{1}{2520} \left(\frac{\theta}{\sqrt{2}}\right)^8 = \frac{1}{2520} \cdot \frac{\theta^8}{16} = \frac{\theta^8}{40320} = \frac{\theta^8}{8!}$
+
+故精確導出次方為 $n \equiv 0 \pmod 4$ 的閉合泰勒級數：
+
+$$f_0(\theta) = \cos\left(\frac{\theta}{\sqrt{2}}\right)\cosh\left(\frac{\theta}{\sqrt{2}}\right) = 1 - \frac{\theta^4}{4!} + \frac{\theta^8}{8!} - \frac{\theta^{12}}{12!} + \dots$$
+
+---
+#### $j$ 項分量 $f_1(\theta)$ 之泰勒展開詳細推導
+
+定義角度縮放參數 $\alpha = \frac{\theta}{\sqrt{2}}$，分別展開兩組交叉乘積項：
+
+$$\sin(\alpha)\cosh(\alpha) = \left( \alpha - \frac{\alpha^3}{3!} + \frac{\alpha^5}{5!} - \frac{\alpha^7}{7!} + \dots \right) \left( 1 + \frac{\alpha^2}{2!} + \frac{\alpha^4}{4!} + \frac{\alpha^6}{6!} + \dots \right)$$
+
+$$\cos(\alpha)\sinh(\alpha) = \left( 1 - \frac{\alpha^2}{2!} + \frac{\alpha^4}{4!} - \frac{\alpha^6}{6!} + \dots \right) \left( \alpha + \frac{\alpha^3}{3!} + \frac{\alpha^5}{5!} + \frac{\alpha^7}{7!} + \dots \right)$$
+
+將兩式相加，按奇數次方整理同類項：
+
+1. **$\alpha^1$ 項：**
+   $$\alpha + \alpha = 2\alpha$$
+
+2. **$\alpha^3$ 項：**
+   $$\left( -\frac{1}{6} + \frac{1}{2} + \frac{1}{6} - \frac{1}{2} \right)\alpha^3 = 0 \quad \text{（精確抵消）}$$
+
+3. **$\alpha^5$ 項：**
+   $$\left( \frac{1}{120} - \frac{1}{12} + \frac{1}{24} \right) + \left( \frac{1}{120} - \frac{1}{12} + \frac{1}{24} \right) = 2 \left( \frac{1}{120} - \frac{1}{24} \right) = -\frac{1}{15} \alpha^5$$
+
+4. **$\alpha^7$ 項：**
+   $$\alpha^7 \text{ 相關係數相加同樣精確抵消為 } 0$$
+
+將 $\alpha = \frac{\theta}{\sqrt{2}}$ 代回並乘上前方之縮放係數 $\frac{1}{\sqrt{2}}$：
+
+* **$\theta^1$ 項：**
+  $$\frac{1}{\sqrt{2}} \cdot 2\left(\frac{\theta}{\sqrt{2}}\right) = \frac{2\theta}{2} = \theta$$
+
+* **$\theta^5$ 項：**
+  $$\frac{1}{\sqrt{2}} \left( -\frac{1}{15} \right) \left(\frac{\theta}{\sqrt{2}}\right)^5 = \frac{1}{\sqrt{2}} \left( -\frac{1}{15} \right) \frac{\theta^5}{4\sqrt{2}} = -\frac{\theta^5}{120} = -\frac{\theta^5}{5!}$$
+
+* **$\theta^9$ 項：**
+  $$\text{經同理計算導出 } +\frac{\theta^9}{9!}$$
+
+故精確導出次方為 $n \equiv 1 \pmod 4$ 的閉合泰勒級數：
+
+$$f_1(\theta) = \frac{1}{\sqrt{2}} \left[ \sin\left(\frac{\theta}{\sqrt{2}}\right) \cosh\left(\frac{\theta}{\sqrt{2}}\right) + \cos\left(\frac{\theta}{\sqrt{2}}\right) \sinh\left(\frac{\theta}{\sqrt{2}}\right) \right] = \theta - \frac{\theta^5}{5!} + \frac{\theta^9}{9!} - \frac{\theta^{13}}{13!} + \dots$$
+---
+
+#### $i$ 項分量 $f_2(\theta)$ 之泰勒展開詳細推導
+
+定義角度縮放參數 $\alpha = \frac{\theta}{\sqrt{2}}$，將三角正弦函數與雙曲正弦函數分別進行泰勒級數展開：
+
+$$\sin(\alpha) = \alpha - \frac{\alpha^3}{3!} + \frac{\alpha^5}{5!} - \frac{\alpha^7}{7!} + \frac{\alpha^9}{9!} - \dots$$
+
+$$\sinh(\alpha) = \alpha + \frac{\alpha^3}{3!} + \frac{\alpha^5}{5!} + \frac{\alpha^7}{7!} + \frac{\alpha^9}{9!} + \dots$$
+
+兩式相乘，並按 $\alpha$ 的偶數次方收集同類項：
+
+$$\begin{aligned}
+\sin(\alpha)\sinh(\alpha) = &\ \alpha \cdot \alpha \\
+&+ \left(\frac{1}{3!} - \frac{1}{3!}\right)\alpha^4 \\
+&+ \left(\frac{1}{5!} - \frac{1}{3! \cdot 3!} + \frac{1}{5!}\right)\alpha^6 \\
+&+ \left(\frac{1}{7!} - \frac{1}{5! \cdot 3!} + \frac{1}{3! \cdot 5!} - \frac{1}{7!}\right)\alpha^8 \\
+&+ \left(\frac{1}{9!} - \frac{1}{7! \cdot 3!} + \frac{1}{5! \cdot 5!} - \frac{1}{3! \cdot 7!} + \frac{1}{9!}\right)\alpha^{10} - \dots
+\end{aligned}$$
+
+計算各係數數值：
+
+* $\alpha^2$ 項係數： $1$
+* $\alpha^4$ 項係數： $\frac{1}{6} - \frac{1}{6} = 0$（精確抵消）
+* $\alpha^6$ 項係數： $\frac{1}{120} - \frac{1}{36} + \frac{1}{120} = \frac{1}{60} - \frac{1}{36} = \frac{3 - 5}{180} = -\frac{1}{90}$
+* $\alpha^8$ 項係數：奇數正負對稱，精確抵消為 $0$
+
+將 $\alpha = \frac{\theta}{\sqrt{2}}$ 代回上式：
+
+* $\alpha^2$ 項： $\left(\frac{\theta}{\sqrt{2}}\right)^2 = \frac{\theta^2}{2} = \frac{\theta^2}{2!}$
+* $\alpha^6$ 項： $-\frac{1}{90} \left(\frac{\theta}{\sqrt{2}}\right)^6 = -\frac{1}{90} \cdot \frac{\theta^6}{8} = -\frac{\theta^6}{720} = -\frac{\theta^6}{6!}$
+
+故精確導出次方為 $n \equiv 2 \pmod 4$ 的閉合泰勒級數：
+
+$$f_2(\theta) = \sin\left(\frac{\theta}{\sqrt{2}}\right)\sinh\left(\frac{\theta}{\sqrt{2}}\right) = \frac{\theta^2}{2!} - \frac{\theta^6}{6!} + \frac{\theta^{10}}{10!} - \frac{\theta^{14}}{14!} + \dots$$
+
+---
+
+#### $k$ 項分量 $f_3(\theta)$ 之泰勒展開詳細推導
+
+定義角度縮放參數 $\alpha = \frac{\theta}{\sqrt{2}}$，分別展開兩組交叉乘積項：
+
+$$\sin(\alpha)\cosh(\alpha) = \left( \alpha - \frac{\alpha^3}{3!} + \frac{\alpha^5}{5!} - \frac{\alpha^7}{7!} + \dots \right) \left( 1 + \frac{\alpha^2}{2!} + \frac{\alpha^4}{4!} + \frac{\alpha^6}{6!} + \dots \right)$$
+
+$$\cos(\alpha)\sinh(\alpha) = \left( 1 - \frac{\alpha^2}{2!} + \frac{\alpha^4}{4!} - \frac{\alpha^6}{6!} + \dots \right) \left( \alpha + \frac{\alpha^3}{3!} + \frac{\alpha^5}{5!} + \frac{\alpha^7}{7!} + \dots \right)$$
+
+將兩式相減，按奇數次方整理同類項：
+
+1. **$\alpha^1$ 項：**
+   $$\alpha - \alpha = 0 \quad \text{（精確抵消）}$$
+
+2. **$\alpha^3$ 項：**
+   $$\left( -\frac{1}{6} + \frac{1}{2} \right) - \left( -\frac{1}{2} + \frac{1}{6} \right) = \frac{1}{3} - \left( -\frac{1}{3} \right) = \frac{2}{3} \alpha^3$$
+
+3. **$\alpha^5$ 項：**
+   $$\alpha^5 \text{ 相關係數相減精確抵消為 } 0$$
+
+4. **$\alpha^7$ 項：**
+   $$\text{經計算導出相減結果為 } -\frac{1}{315} \alpha^7$$
+
+將 $\alpha = \frac{\theta}{\sqrt{2}}$ 代回並乘上前方之縮放係數 $\frac{1}{\sqrt{2}}$：
+
+* **$\theta^3$ 項：**
+  $$\frac{1}{\sqrt{2}} \left( \frac{2}{3} \right) \left(\frac{\theta}{\sqrt{2}}\right)^3 = \frac{1}{\sqrt{2}} \cdot \frac{2}{3} \cdot \frac{\theta^3}{2\sqrt{2}} = \frac{\theta^3}{6} = \frac{\theta^3}{3!}$$
+
+* **$\theta^7$ 項：**
+  $$\frac{1}{\sqrt{2}} \left( -\frac{1}{315} \right) \left(\frac{\theta}{\sqrt{2}}\right)^7 = \frac{1}{\sqrt{2}} \left( -\frac{1}{315} \right) \frac{\theta^7}{8\sqrt{2}} = -\frac{\theta^7}{5040} = -\frac{\theta^7}{7!}$$
+
+故精確導出次方為 $n \equiv 3 \pmod 4$ 的閉合泰勒級數：
+
+$$f_3(\theta) = \frac{1}{\sqrt{2}} \left[ \sin\left(\frac{\theta}{\sqrt{2}}\right) \cosh\left(\frac{\theta}{\sqrt{2}}\right) - \cos\left(\frac{\theta}{\sqrt{2}}\right) \sinh\left(\frac{\theta}{\sqrt{2}}\right) \right] = \frac{\theta^3}{3!} - \frac{\theta^7}{7!} + \frac{\theta^{11}}{11!} - \frac{\theta^{15}}{15!} + \dots$$
+---
+
+#### 總整理
+* ** 常數項分量 $f_0(\theta)$ （ $1$ 軸，次方 $0, 4, 8, 12 \dots$）：**
   $$f_0(\theta) = \cos\left(\frac{\theta}{\sqrt{2}}\right) \cosh\left(\frac{\theta}{\sqrt{2}}\right) = 1 - \frac{\theta^4}{4!} + \frac{\theta^8}{8!} - \frac{\theta^{12}}{12!} + \dots$$
 
 * ** $j$ 項分量 $f_1(\theta)$ （ $j$ 軸，次方 $1, 5, 9, 13 \dots$）：**
@@ -995,7 +1140,7 @@ $$f_3(\theta) = \frac{\theta^3}{3!} - \frac{\theta^7}{7!} + \frac{\theta^{11}}{1
 
 ---
 
-### 2. 奇數分量之交叉線性組合關聯
+#### 2. 奇數分量之交叉線性組合關聯
 
 針對奇數次方分量 $f_1(\theta)$ 與 $f_3(\theta)$，可由三角與雙曲函數之交叉乘積透過加減法相互組合解出：
 
@@ -1007,6 +1152,6 @@ $$\sqrt{2} \cos\left(\frac{\theta}{\sqrt{2}}\right) \sinh\left(\frac{\theta}{\sq
 
 ### 3. 完整歐拉公式表示式
 
-綜合上述四個空間基底分量，8 階超複數之指數型態最終表示為：
+綜合上述四個空間基底分量之指數型態最終表示為：
 
 $$e^{j\theta} = \cos\left(\frac{\theta}{\sqrt{2}}\right)\cosh\left(\frac{\theta}{\sqrt{2}}\right) + j \cdot \frac{1}{\sqrt{2}} \left[ \sin\left(\frac{\theta}{\sqrt{2}}\right)\cosh\left(\frac{\theta}{\sqrt{2}}\right) + \cos\left(\frac{\theta}{\sqrt{2}}\right)\sinh\left(\frac{\theta}{\sqrt{2}}\right) \right] + i \cdot \sin\left(\frac{\theta}{\sqrt{2}}\right)\sinh\left(\frac{\theta}{\sqrt{2}}\right) + k \cdot \frac{1}{\sqrt{2}} \left[ \sin\left(\frac{\theta}{\sqrt{2}}\right)\cosh\left(\frac{\theta}{\sqrt{2}}\right) - \cos\left(\frac{\theta}{\sqrt{2}}\right)\sinh\left(\frac{\theta}{\sqrt{2}}\right) \right]$$
